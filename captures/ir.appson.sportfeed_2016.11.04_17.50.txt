@@ -1,0 +1,39 @@
+Applications Memory Usage (kB):
+Uptime: 22464090 Realtime: 31577563
+
+** MEMINFO in pid 12304 [ir.appson.sportfeed] **
+                   Pss  Private  Private  Swapped     Heap     Heap     Heap
+                 Total    Dirty    Clean    Dirty     Size    Alloc     Free
+                ------   ------   ------   ------   ------   ------   ------
+  Native Heap    14926    14900        8     2080    28672    17401    11270
+  Dalvik Heap    30552    30432      104     1056    36669    30439     6230
+ Dalvik Other      407      404        0        0                           
+        Stack      556      556        0        0                           
+    Other dev        4        0        4        0                           
+     .so mmap     3134     1024     1232     1920                           
+    .apk mmap      164        0       20        0                           
+    .ttf mmap      164        0      104        0                           
+    .dex mmap     5416        0     5288        0                           
+    .oat mmap     2563        0     1020        0                           
+    .art mmap     2724      984      112      384                           
+   Other mmap      337        4      284        0                           
+   EGL mtrack    43236    43236        0        0                           
+    GL mtrack    32484    32484        0        0                           
+      Unknown      264      264        0       84                           
+        TOTAL   136931   124288     8176     5524    65341    47840    17500
+ 
+ Objects
+               Views:      259         ViewRootImpl:        2
+         AppContexts:        4           Activities:        2
+              Assets:        3        AssetManagers:        3
+       Local Binders:       11        Proxy Binders:       29
+       Parcel memory:        5         Parcel count:       23
+    Death Recipients:        0      OpenSSL Sockets:        0
+ 
+ SQL
+         MEMORY_USED:      142
+  PAGECACHE_OVERFLOW:       48          MALLOC_SIZE:       62
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)          cache  Dbname
+         4       28             62        35/30/8  /data/data/ir.appson.sportfeed/databases/google_analytics_v4.db

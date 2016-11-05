@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="actionBarStyle">@style/ActionBar9090</item>
+        <item name="android:activatedBackgroundIndicator">@drawable/activated_background</item>
+    </style>
+
+    <style name="ActionBar9090" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="background">@color/action_bar_bkg</item>
+        <item name="titleTextStyle">@style/TitleTextStyle9090</item>
+    </style>
+
+    <style name="TitleTextStyle9090" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/action_bar_text</item>
+    </style>
+</resources>

@@ -1,0 +1,46 @@
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:context="com.ms.t.tms.NavigationDrawerFragment"
+        android:orientation="vertical"
+        >
+
+
+        <ImageView
+                android:layout_marginTop="0dp"
+                android:paddingTop="0dp"
+                android:id="@+id/imageView_fragment_navigation_drawer"
+                android:background="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo_9090"
+                android:layout_alignParentTop="true" android:layout_alignParentStart="true"
+                android:layout_gravity="top"/>
+
+    <ListView
+            android:id="@+id/drawerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:choiceMode="singleChoice"
+            android:dividerHeight="0dp"
+            android:background="@color/white"
+            tools:context=".NavigationDrawerFragment"
+            android:divider="#000"/>
+
+
+</LinearLayout>
+
+
+
+<!--<ListView xmlns:android="http://schemas.android.com/apk/res/android"-->
+          <!--xmlns:tools="http://schemas.android.com/tools"-->
+          <!--android:layout_width="match_parent"-->
+          <!--android:layout_height="match_parent"-->
+          <!--android:choiceMode="singleChoice"-->
+          <!--android:divider="@android:color/transparent"-->
+          <!--android:dividerHeight="0dp"-->
+          <!--android:background="@color/side_menu_bkg"-->
+          <!--tools:context=".NavigationDrawerFragment"/>-->

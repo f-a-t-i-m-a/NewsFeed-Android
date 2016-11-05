@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">اخبار املاک</string>
+    <string name="version">1.0.0</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+
+    <string name="home_persian">خانه</string>
+    <string name="all_channels_persian">
+        همه&#8204;ی کانال&#8204;ها
+    </string>
+    <string name="support_national_team_persian">حمایت از تیم ملی</string>
+    <string name="suggest_app_to_a_friend_persian">پیشنهاد به دوستان</string>
+    <string name="customer_support_persian">پشتیبانی</string>
+    <string name="about_us_persian">
+        درباره&#8204;ی
+        ما
+    </string>
+    <string name="all_news_persian">همه&#8204;ی اخبار</string>
+    <string name="title_activity_about_us">درباره این برنامه</string>
+
+    <string name="suggested_update_title">بروز رسانی</string>
+    <string name="suggested_update_message">نسخه جدید اینبرنامه آماده شده. مایل به به&#8204;روز رسانی هستید؟</string>
+    <string name="required_update_title">بروز رسانی</string>
+    <string name="required_update_message">نسخه فعلی برنامه قدیمی است و برای استفاده از آن نیاز به به&#8204;روز رسانی
+        دارید.</string>
+    <string name="ok">باشه</string>
+    <string name="cancel">نه مرسی</string>
+    <string name="title_activity_customer_support">پشتیبانی</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_support_national_team">حمایت از تیم ملی</string>
+
+    <string name="crash_toast_text">مشکلی پیش آمد. خیلی ببخشید. تو آپدیت بعدی درستش می&#8204;کنیم :)</string>
+    <string name="dear_friend_enjoy_this_app">من برنامهٔ ۹۰۹۰ را روی دستگاه اندرویدی‌ام نصب کردم. از طریق ۹۰۹۰ به
+        جدیدترین اخبار اختصاصی تیم ملی فوتبال و سایر اخبار فوتبالی دسترسی پیدا می‌کنم. همین حالا آن را از سایت
+        http://teammelli.ir/download/9090.apk دانلود کن و لذت ببر!</string>
+
+</resources>
+
