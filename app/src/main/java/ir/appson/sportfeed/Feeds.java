@@ -1,17 +1,13 @@
 package ir.appson.sportfeed;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-
-import static ir.appson.sportfeed.proxy.RestClient.RequestMethod.GET;
-
-/**
- * Created by fatemeh on 11/6/2016.
- */
+import ir.appson.sportfeed.proxy.dto.FeedSummary;
 
 public class Feeds {
-   List<FeedSummary> list;
+//   List<FeedSummary> list;
+   public ArrayList<FeedSummary> Feeds;
 }
 

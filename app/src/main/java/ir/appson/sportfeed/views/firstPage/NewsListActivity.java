@@ -83,12 +83,12 @@ public class NewsListActivity extends ActionBarActivity
 //        String alaki = null;
 //        alaki.equals("");
 
-        if (mNavigationDrawerFragment!=null && mNavigationDrawerFragment.getNewsChannelObject(position)!= null && 2<= position && position <= mNavigationDrawerFragment.mNewsChannelsObjects.size()+1){
+        if (mNavigationDrawerFragment!=null && mNavigationDrawerFragment.getFeedSummary(position)!= null && 2<= position && position <= mNavigationDrawerFragment.mNewsChannelsObjects.size()+1){
             Intent myIntent = new Intent(NewsListActivity.this, ChannelNewsFeedActivity.class);
             Bundle bundle = new Bundle();
 
-            bundle.putString("FeedName", mNavigationDrawerFragment.getNewsChannelObject(position).getTitle());
-            bundle.putInt("FeedId", mNavigationDrawerFragment.getNewsChannelObject(position).getId());
+            bundle.putString("FeedName", mNavigationDrawerFragment.getFeedSummary(position).getTitle());
+            bundle.putInt("FeedId", mNavigationDrawerFragment.getFeedSummary(position).getID());
             myIntent.putExtras(bundle);
             startActivity(myIntent);
         }

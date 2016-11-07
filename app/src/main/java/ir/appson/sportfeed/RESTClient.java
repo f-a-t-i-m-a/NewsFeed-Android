@@ -1,16 +1,12 @@
 package ir.appson.sportfeed;
 
-import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
-import ir.appson.sportfeed.proxy.RestClient;
+import ir.appson.sportfeed.views.navigationDrawer.NavigationDrawerFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import java.util.List;
 
 /**
  * Created by fatemeh on 11/6/2016.
@@ -24,8 +20,8 @@ public class RESTClient{
 
     private static final String BASE_URL = "https://news.khoonat.com";
     private APIService service;
-    List<User> users = null;
     boolean success = false;
+
 
 
     public RESTClient() {
@@ -36,25 +32,27 @@ public class RESTClient{
 
         service = retrofit.create(APIService.class);
     }
-
-    public Object getUsers() {
-        Call<Object> userlist = service.users();
-        userlist.enqueue(new Callback<Object>() {
+    public Feeds getFeeds(final NavigationDrawerFragment navigationDrawerFragment) {
+        final Call<Feeds> feeds = service.feeds();
+        final Feeds[] f = new Feeds[1];
+        feeds.enqueue(new Callback<Feeds>() {
             @Override
-            public void onResponse(Call<Object> call, Response<Object> response) {
+            public void onResponse(Call<Feeds> call, Response<Feeds> response) {
                 if (response.isSuccessful()) {
-//                    users = response.body();
-                    callback.resultReady(users);
+                    f[0] = response.body();
+                    navigationDrawerFragment.populateYourself(response.body());
+//                    callback.resultReady(response.body());
+
                 }
             }
 
             @Override
-            public void onFailure(Call<Object> call, Throwable t) {
+            public void onFailure(Call<Feeds> call, Throwable t) {
                 Log.e("REST", t.getMessage());
             }
 
         });
-        return null;
+        return f[0];
     }
 
     public void setCallback(ResultReadyCallback callback) {
@@ -70,7 +68,7 @@ public class RESTClient{
     }
 
     public interface ResultReadyCallback {
-        public void resultReady(List<User> users);
+        public void resultReady(Feeds users);
     }
 
 }
