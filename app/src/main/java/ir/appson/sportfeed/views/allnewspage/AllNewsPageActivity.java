@@ -20,7 +20,7 @@ import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.views.detail.NewsDetailWithViewPagerActivity;
 
 
-public class AllNewsListPageActivity extends ActionBarActivity {
+public class AllNewsPageActivity extends ActionBarActivity {
 
     static int STATIC_INT = 1;//This is used for startActivityForResult
     ListView listView;
@@ -32,7 +32,7 @@ public class AllNewsListPageActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         Log.i("TAG", "Setting screen name: " + " all channels news list page");
-        mTracker.setScreenName("AllNewsListPageActivity " + " all news list page");
+        mTracker.setScreenName("AllNewsPageActivity " + " all news list page");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
@@ -48,7 +48,7 @@ public class AllNewsListPageActivity extends ActionBarActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent myIntent = new Intent(AllNewsListPageActivity.this, NewsDetailWithViewPagerActivity.class);
+                Intent myIntent = new Intent(AllNewsPageActivity.this, NewsDetailWithViewPagerActivity.class);
                 int newsId = (int) view.getTag();
                 Bundle bundle = new Bundle();
                 bundle.putInt("channelId", channelId);
@@ -71,7 +71,9 @@ public class AllNewsListPageActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);//???
 
 
-        new AllNewsListPageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, this, listView);
+        /**/
+        AllNewsPageRESTClient.getInstance().getFeeds();
+        new AllNewsPageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, this, listView);
         // Obtain the shared Tracker instance.
         Application9090 application = (Application9090) getApplication();
         mTracker = application.getDefaultTracker();

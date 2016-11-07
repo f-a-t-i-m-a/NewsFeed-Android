@@ -1,8 +1,9 @@
-package ir.appson.sportfeed.views.navigationDrawer;
+package ir.appson.sportfeed.views.allnewspage;
 
 import android.util.Log;
 import ir.appson.sportfeed.proxy.dto.FeedSummary;
 import ir.appson.sportfeed.proxy.dto.Feeds;
+import ir.appson.sportfeed.views.navigationDrawer.NavigationDrawerAPIService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -15,9 +16,9 @@ import java.util.ArrayList;
  * Created by fatemeh on 11/6/2016.
  */
 
-public class NavigationDrawerRESTClient {
+public class AllNewsPageRESTClient {
 
-    private static NavigationDrawerRESTClient instance = null;
+    private static AllNewsPageRESTClient instance = null;
 
     private ResultReadyCallback callback;
 
@@ -27,7 +28,7 @@ public class NavigationDrawerRESTClient {
 
 
 
-    public NavigationDrawerRESTClient() {
+    public AllNewsPageRESTClient() {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
@@ -35,14 +36,13 @@ public class NavigationDrawerRESTClient {
 
         service = retrofit.create(NavigationDrawerAPIService.class);
     }
-    public ArrayList<FeedSummary> getFeeds(final NavigationDrawerFragment navigationDrawerFragment) {
+    public ArrayList<FeedSummary> getFeeds() {
         final Call<Feeds> feeds = service.feeds();
         feeds.enqueue(new Callback<Feeds>() {
             @Override
             public void onResponse(Call<Feeds> call, Response<Feeds> response) {
                 if (response.isSuccessful()) {
-                    navigationDrawerFragment.populateYourself(response.body().Feeds);
-//                    callback.resultReady(response.body());
+                    callback.resultReady(response.body());
 
                 }
             }
@@ -61,9 +61,9 @@ public class NavigationDrawerRESTClient {
     }
 
 
-    public static NavigationDrawerRESTClient getInstance() {
+    public static AllNewsPageRESTClient getInstance() {
         if(instance == null) {
-            instance = new NavigationDrawerRESTClient();
+            instance = new AllNewsPageRESTClient();
         }
         return instance;
     }

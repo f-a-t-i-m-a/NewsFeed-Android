@@ -1,4 +1,4 @@
-package ir.appson.sportfeed.views.channelnewsfeed;
+package ir.appson.sportfeed.views.channelnewspage;
 
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -14,7 +14,7 @@ import ir.appson.sportfeed.util.ImageHelper;
 /**
  * Created by fatemeh on 9/12/2015.
  */
-public class ChannelNewsListPageThumbnailImageAsync extends AsyncTask<Object, Object, Bitmap> {
+public class ChannelPageThumbnailImageAsync extends AsyncTask<Object, Object, Bitmap> {
     ImageView imageView;
     @Override
     protected Bitmap doInBackground(Object... params) {

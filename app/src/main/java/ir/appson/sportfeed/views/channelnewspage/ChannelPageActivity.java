@@ -1,29 +1,27 @@
-package ir.appson.sportfeed.views.channelnewsfeed;
+package ir.appson.sportfeed.views.channelnewspage;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.*;
-import android.widget.*;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-
 import ir.appson.sportfeed.Application9090;
 import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.views.detail.NewsDetailWithViewPagerActivity;
 
-import static ir.appson.sportfeed.util.ImageHelper.getRoundedCornerBitmap;
-
-
-public class ChannelNewsFeedActivity extends ActionBarActivity {
+public class ChannelPageActivity extends ActionBarActivity {
 
     static int STATIC_INT = 1;
-    static String mNewsChannelTitle="";
+    static String mNewsChannelTitle = "";
     ListView list;
     int channelId;
     int[] newsListIds;
@@ -36,11 +34,11 @@ public class ChannelNewsFeedActivity extends ActionBarActivity {
         mTracker.setScreenName("ChannelNewsListActivity " + " channel news list page");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_channel_news_feed);
-
         list = (ListView) findViewById(R.id.listView);
         //FF Added to make the action bar RTL (right to left)
         forceRTLIfSupported();
@@ -48,32 +46,31 @@ public class ChannelNewsFeedActivity extends ActionBarActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent myIntent = new Intent(ChannelNewsFeedActivity.this, NewsDetailWithViewPagerActivity.class);
+                Intent myIntent = new Intent(ChannelPageActivity.this, NewsDetailWithViewPagerActivity.class);
                 int newsId = (int) view.getTag();
                 Bundle bundle = new Bundle();
-                bundle.putInt("channelId",channelId);
-                bundle.putInt("newsId",newsId);
+                bundle.putInt("channelId", channelId);
+                bundle.putInt("newsId", newsId);
                 bundle.putIntArray("newsListIds", newsListIds);
                 myIntent.putExtras(bundle);
                 startActivityForResult(myIntent, STATIC_INT);
             }
         });
-
         //FF to change the title in the action bar
         Bundle bundle = getIntent().getExtras();
-        if (bundle !=null) {
+        if (bundle != null) {
             String feedName = bundle.getString("FeedName");
             mNewsChannelTitle = feedName;
             channelId = bundle.getInt("FeedId");
-
         }
         setTitle(mNewsChannelTitle);
-
         //FF for back button in action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);//???
 
-        new ChannelNewsListPageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, this);
+
+        new ChannelPageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, this);
+
         // Obtain the shared Tracker instance.
         Application9090 application = (Application9090) getApplication();
         mTracker = application.getDefaultTracker();
@@ -81,9 +78,8 @@ public class ChannelNewsFeedActivity extends ActionBarActivity {
 
     //FF added to make the action bar RTL
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    private void forceRTLIfSupported()
-    {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1){
+    private void forceRTLIfSupported() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
     }
@@ -91,10 +87,10 @@ public class ChannelNewsFeedActivity extends ActionBarActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch(requestCode) {
-            case (1) : {
+        switch (requestCode) {
+            case (1): {
                 if (resultCode == Activity.RESULT_OK) {
-                    int channelId = data.getIntExtra("channelIdFromNewsDetailActivity",-1);
+                    int channelId = data.getIntExtra("channelIdFromNewsDetailActivity", -1);
                     // TODO Update your TextView.
                     this.channelId = channelId;
                 }
@@ -109,19 +105,16 @@ public class ChannelNewsFeedActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         switch (item.getItemId()) {
             case android.R.id.home:
                 // click on 'up' button in the action bar, handle it here
                 //When user clicks the up button in action bar the onBackPressed does not get called. So we need to call it manually.
                 onBackPressed();
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }

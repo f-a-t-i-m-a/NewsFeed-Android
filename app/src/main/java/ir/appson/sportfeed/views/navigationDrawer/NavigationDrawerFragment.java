@@ -99,7 +99,7 @@ public class NavigationDrawerFragment extends Fragment {
         // Indicate that this fragment would like to influence the set of actions in the action bar.
         setHasOptionsMenu(true);
         //FF For async
-        Feeds result = NavigationDrawerRESTClient.getInstance().getFeeds(this);
+        NavigationDrawerRESTClient.getInstance().getFeeds(this);
 //        new NavigationDrawerAsync(getActivity(), this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 

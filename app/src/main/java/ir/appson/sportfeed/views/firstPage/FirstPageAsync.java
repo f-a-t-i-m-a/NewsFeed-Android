@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
-import ir.appson.sportfeed.views.channelnewsfeed.ChannelNewsFeedActivity;
-import ir.appson.sportfeed.views.channelnewsfeed.ChannelNewsListPageThumbnailImageAsync;
+import ir.appson.sportfeed.views.channelnewspage.ChannelPageActivity;
+import ir.appson.sportfeed.views.channelnewspage.ChannelPageThumbnailImageAsync;
 import ir.appson.sportfeed.views.detail.NewsDetailWithViewPagerActivity;
 import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.proxy.FeedsWithNewsProxy;
@@ -88,7 +88,7 @@ public class FirstPageAsync extends AsyncTask<Object, Object, ArrayList<TripleNe
             currentTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent myIntent = new Intent(context, ChannelNewsFeedActivity.class);
+                    Intent myIntent = new Intent(context, ChannelPageActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putInt("newsId", newsIds[0]);
                     bundle.putInt("channelId", channelId);
@@ -104,7 +104,7 @@ public class FirstPageAsync extends AsyncTask<Object, Object, ArrayList<TripleNe
             moreButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent myIntent = new Intent(context, ChannelNewsFeedActivity.class);
+                    Intent myIntent = new Intent(context, ChannelPageActivity.class);
                     Bundle bundle = new Bundle();
                     //We assume that each channel has AT LEAST one news. Hence the newsIds[0] wont ever throw exception.
                     bundle.putInt("newsId", newsIds[0]);
@@ -150,7 +150,7 @@ public class FirstPageAsync extends AsyncTask<Object, Object, ArrayList<TripleNe
 
                 newsImage = (ImageView) partialChild.findViewById(R.id.imageView_firstPage_news1);
                 newsImage.setImageBitmap(ImageHelper.getRoundedCornerBitmap(newsImage));
-                new ChannelNewsListPageThumbnailImageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, newsImage, newsDetailObject);
+                new ChannelPageThumbnailImageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, newsImage, newsDetailObject);
             }
 
             if (newsDetailObjectsTriple.size() > 1)
@@ -185,7 +185,7 @@ public class FirstPageAsync extends AsyncTask<Object, Object, ArrayList<TripleNe
 
                 newsImage = (ImageView) partialChild.findViewById(R.id.imageView_firstPage_news2);
                 newsImage.setImageBitmap(ImageHelper.getRoundedCornerBitmap(newsImage));
-                new ChannelNewsListPageThumbnailImageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, newsImage, newsDetailObject);
+                new ChannelPageThumbnailImageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, newsImage, newsDetailObject);
             }
 
             if (newsDetailObjectsTriple.size() > 2)
@@ -219,7 +219,7 @@ public class FirstPageAsync extends AsyncTask<Object, Object, ArrayList<TripleNe
 
                 newsImage = (ImageView) partialChild.findViewById(R.id.imageView_firstPage_news3);
                 newsImage.setImageBitmap(ImageHelper.getRoundedCornerBitmap(newsImage));
-                new ChannelNewsListPageThumbnailImageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, newsImage, newsDetailObject);
+                new ChannelPageThumbnailImageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, newsImage, newsDetailObject);
             }
 
             l.addView(partialChild);

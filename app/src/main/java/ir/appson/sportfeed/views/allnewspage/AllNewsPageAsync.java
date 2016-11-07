@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.*;
 
 import ir.appson.sportfeed.Application9090;
-import ir.appson.sportfeed.views.channelnewsfeed.ChannelNewsListPageThumbnailImageAsync;
+import ir.appson.sportfeed.views.channelnewspage.ChannelPageThumbnailImageAsync;
 import ir.appson.sportfeed.NewsFeedProxy;
 import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.proxy.dto.NewsDetailObject;
@@ -20,14 +20,14 @@ import ir.appson.sportfeed.util.ImageHelper;
 
 import java.util.ArrayList;
 
-public class AllNewsListPageAsync extends AsyncTask<Object, Object, ArrayList<NewsDetailObject>> {
+public class AllNewsPageAsync extends AsyncTask<Object, Object, ArrayList<NewsDetailObject>> {
 
 
-    AllNewsListPageActivity context;
+    AllNewsPageActivity context;
     ListView listView;
 
     protected ArrayList<NewsDetailObject> doInBackground(Object[] params) {
-        context = (AllNewsListPageActivity) params[0];
+        context = (AllNewsPageActivity) params[0];
         listView = (ListView) params[1];
 //        SharedPreferences prefs = context.getApplicationContext().getSharedPreferences("ir.appson.sportfeed",Context.MODE_PRIVATE);
 //        String sessionId = prefs.getString("sessionId", "");
@@ -78,7 +78,7 @@ public class AllNewsListPageAsync extends AsyncTask<Object, Object, ArrayList<Ne
 
             Bitmap bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.thumbnail_loading);
             imageView.setImageBitmap(ImageHelper.getRoundedCornerBitmap(bitmap, getContext().getResources().getDisplayMetrics()));
-            new ChannelNewsListPageThumbnailImageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,imageView, newsDetailObject);
+            new ChannelPageThumbnailImageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,imageView, newsDetailObject);
 
             title.setText(newsDetailObject.getNewsTitle());
             newsResource.setText(newsDetailObject.getNewsReference());

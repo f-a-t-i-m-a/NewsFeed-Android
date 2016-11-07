@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.channelnewsfeed.ChannelNewsFeedActivity"
+            android:name=".views.channelnewspage.ChannelPageActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:parentActivityName=".views.firstPage.NewsListActivity"
             android:screenOrientation="portrait" >
@@ -35,7 +35,7 @@
                 android:value=".views.firstPage.NewsListActivity" />
         </activity>
         <activity
-            android:name=".views.allnewspage.AllNewsListPageActivity"
+            android:name=".views.allnewspage.AllNewsPageActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:parentActivityName=".views.firstPage.NewsListActivity"
             android:screenOrientation="portrait" >
@@ -47,11 +47,11 @@
             android:name=".views.detail.NewsDetailWithViewPagerActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label=""
-            android:parentActivityName=".views.channelnewsfeed.ChannelNewsFeedActivity"
+            android:parentActivityName=".views.channelnewspage.ChannelPageActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.channelnewsfeed.ChannelNewsFeedActivity" />
+                android:value=".views.channelnewspage.ChannelPageActivity" />
         </activity>
         <activity
             android:name=".views.about.AboutUsActivity"

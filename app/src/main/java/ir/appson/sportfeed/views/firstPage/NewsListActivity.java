@@ -18,9 +18,9 @@ import android.widget.*;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import ir.appson.sportfeed.*;
-import ir.appson.sportfeed.views.allnewspage.AllNewsListPageActivity;
+import ir.appson.sportfeed.views.allnewspage.AllNewsPageActivity;
 import ir.appson.sportfeed.views.about.AboutUsActivity;
-import ir.appson.sportfeed.views.channelnewsfeed.ChannelNewsFeedActivity;
+import ir.appson.sportfeed.views.channelnewspage.ChannelPageActivity;
 import ir.appson.sportfeed.views.navigationDrawer.NavigationDrawerFragment;
 
 
@@ -84,7 +84,7 @@ public class NewsListActivity extends ActionBarActivity
 //        alaki.equals("");
 
         if (mNavigationDrawerFragment!=null && mNavigationDrawerFragment.getFeedSummary(position)!= null && 2<= position && position <= mNavigationDrawerFragment.mNewsChannelsObjects.size()+1){
-            Intent myIntent = new Intent(NewsListActivity.this, ChannelNewsFeedActivity.class);
+            Intent myIntent = new Intent(NewsListActivity.this, ChannelPageActivity.class);
             Bundle bundle = new Bundle();
 
             bundle.putString("FeedName", mNavigationDrawerFragment.getFeedSummary(position).getTitle());
@@ -99,7 +99,7 @@ public class NewsListActivity extends ActionBarActivity
                     .commit();
         }
         else if (position ==1){
-            Intent myIntent = new Intent(NewsListActivity.this, AllNewsListPageActivity.class);
+            Intent myIntent = new Intent(NewsListActivity.this, AllNewsPageActivity.class);
             Bundle bundle = new Bundle();
             bundle.putString("FeedName", getString(R.string.all_news_persian));
             bundle.putInt("FeedId", 0);

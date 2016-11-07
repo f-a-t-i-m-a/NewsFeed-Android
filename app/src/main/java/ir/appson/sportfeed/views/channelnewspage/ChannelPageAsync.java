@@ -1,4 +1,4 @@
-package ir.appson.sportfeed.views.channelnewsfeed;
+package ir.appson.sportfeed.views.channelnewspage;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -22,13 +22,13 @@ import java.util.ArrayList;
 /**
  * Created by fatemeh on 9/10/2015.
  */
-public class ChannelNewsListPageAsync extends AsyncTask {
+public class ChannelPageAsync extends AsyncTask {
 
-    ChannelNewsFeedActivity newsFeedActivity;
+    ChannelPageActivity newsFeedActivity;
     ArrayList<NewsDetailObject> newsList = new ArrayList<NewsDetailObject>();
 
     protected ArrayList<NewsDetailObject> doInBackground(Object[] params) {
-        newsFeedActivity = (ChannelNewsFeedActivity) params[0];
+        newsFeedActivity = (ChannelPageActivity) params[0];
 //        SharedPreferences prefs = newsFeedActivity.getApplicationContext().getSharedPreferences("ir.appson.sportfeed",Context.MODE_PRIVATE);
 //        String sessionId = prefs.getString("sessionId", "");
         String sessionId = ((Application9090)newsFeedActivity.getApplicationContext()).getSessionId();
@@ -78,7 +78,7 @@ public class ChannelNewsListPageAsync extends AsyncTask {
 
             Bitmap bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.thumbnail_loading);
             myImage.setImageBitmap(ImageHelper.getRoundedCornerBitmap(bitmap, getContext().getResources().getDisplayMetrics()));
-            new ChannelNewsListPageThumbnailImageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, myImage, newsDetailObject);
+            new ChannelPageThumbnailImageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, myImage, newsDetailObject);
 
             title.setText(newsDetailObject.getNewsTitle());
             newsResource.setText(newsDetailObject.getNewsReference());
