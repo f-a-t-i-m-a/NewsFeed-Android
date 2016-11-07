@@ -1,4 +1,4 @@
-package ir.appson.sportfeed;
+package ir.appson.sportfeed.proxy.dto;
 
 
 import java.util.ArrayList;

@@ -1,7 +1,8 @@
-package ir.appson.sportfeed;
+package ir.appson.sportfeed.views.navigationDrawer;
 
 import android.util.Log;
-import ir.appson.sportfeed.views.navigationDrawer.NavigationDrawerFragment;
+import ir.appson.sportfeed.APIService;
+import ir.appson.sportfeed.proxy.dto.Feeds;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -12,9 +13,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by fatemeh on 11/6/2016.
  */
 
-public class RESTClient{
+public class NavigationDrawerRESTClient {
 
-    private static RESTClient instance = null;
+    private static NavigationDrawerRESTClient instance = null;
 
     private ResultReadyCallback callback;
 
@@ -24,7 +25,7 @@ public class RESTClient{
 
 
 
-    public RESTClient() {
+    public NavigationDrawerRESTClient() {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
@@ -40,7 +41,7 @@ public class RESTClient{
             public void onResponse(Call<Feeds> call, Response<Feeds> response) {
                 if (response.isSuccessful()) {
                     f[0] = response.body();
-                    navigationDrawerFragment.populateYourself(response.body());
+                    navigationDrawerFragment.populateYourself(response.body().Feeds);
 //                    callback.resultReady(response.body());
 
                 }
@@ -60,9 +61,9 @@ public class RESTClient{
     }
 
 
-    public static RESTClient getInstance() {
+    public static NavigationDrawerRESTClient getInstance() {
         if(instance == null) {
-            instance = new RESTClient();
+            instance = new NavigationDrawerRESTClient();
         }
         return instance;
     }

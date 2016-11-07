@@ -16,9 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import ir.appson.sportfeed.Feeds;
+import ir.appson.sportfeed.proxy.dto.Feeds;
 import ir.appson.sportfeed.R;
-import ir.appson.sportfeed.RESTClient;
 import ir.appson.sportfeed.proxy.dto.FeedSummary;
 
 import java.util.ArrayList;
@@ -60,9 +59,9 @@ public class NavigationDrawerFragment extends Fragment {
     public NavigationDrawerFragment() {
     }
 
-    public void populateYourself(Feeds feeds) {
+    public void populateYourself(ArrayList<FeedSummary> feeds) {
         ArrayList<String> channelsNamesList = new ArrayList<>();
-        for(FeedSummary channelObject : feeds.Feeds)
+        for(FeedSummary channelObject : feeds)
             channelsNamesList.add(channelObject.getTitle());
         channelsNamesList.add(0, getResources().getString(R.string.home_persian));
         channelsNamesList.add(1, getResources().getString(R.string.all_channels_persian));
@@ -71,7 +70,7 @@ public class NavigationDrawerFragment extends Fragment {
         channelsNamesList.add(channelsNamesList.size(), getResources().getString(R.string.customer_support_persian));
         channelsNamesList.add(channelsNamesList.size(), getResources().getString(R.string.about_us_persian));
         // mNewsChannelsObjects will be used when user clicks on an item in drawer.
-        mNewsChannelsObjects = feeds.Feeds;
+        mNewsChannelsObjects = feeds;
         mDrawerListView.setAdapter(new ArrayAdapter<>(
                 getActivity().getApplicationContext(),
                 R.layout.text_view_navigation_drawer,
@@ -100,7 +99,7 @@ public class NavigationDrawerFragment extends Fragment {
         // Indicate that this fragment would like to influence the set of actions in the action bar.
         setHasOptionsMenu(true);
         //FF For async
-        Feeds result = RESTClient.getInstance().getFeeds(this);
+        Feeds result = NavigationDrawerRESTClient.getInstance().getFeeds(this);
 //        new NavigationDrawerAsync(getActivity(), this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
