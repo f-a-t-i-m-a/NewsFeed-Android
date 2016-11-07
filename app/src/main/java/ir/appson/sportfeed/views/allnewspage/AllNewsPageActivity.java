@@ -91,9 +91,6 @@ public class AllNewsPageActivity extends ActionBarActivity {
         });
         /**/
         /**/
-//        AllNewsPageRESTClient.getInstance().getFeeds();
-        new AllNewsPageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, this, listView);
-        // Obtain the shared Tracker instance.
         Application9090 application = (Application9090) getApplication();
         mTracker = application.getDefaultTracker();
     }

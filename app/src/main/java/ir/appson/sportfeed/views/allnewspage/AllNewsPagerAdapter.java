@@ -45,7 +45,7 @@ public class AllNewsPagerAdapter extends ArrayAdapter<FeedSummary> {
         title.setTextColor(Color.BLACK);
         Bitmap bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.thumbnail_loading);
         imageView.setImageBitmap(ImageHelper.getRoundedCornerBitmap(bitmap, getContext().getResources().getDisplayMetrics()));
-        new ChannelPageThumbnailImageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, imageView, newsDetailObject);
+//        new ChannelPageThumbnailImageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, imageView, newsDetailObject);
         title.setText(newsDetailObject.getTitle());
 //        newsResource.setText(newsDetailObject.getNewsReference());
         newsResource.setPadding(0, 15, 10, 0);

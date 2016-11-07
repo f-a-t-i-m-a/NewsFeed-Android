@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import ir.appson.sportfeed.Application9090;
 import ir.appson.sportfeed.NewsFeedProxy;
 import ir.appson.sportfeed.R;
+import ir.appson.sportfeed.proxy.dto.FeedSummary;
 import ir.appson.sportfeed.proxy.dto.NewsDetailObject;
 import ir.appson.sportfeed.util.ImageHelper;
 
@@ -19,14 +20,12 @@ public class ChannelPageThumbnailImageAsync extends AsyncTask<Object, Object, Bi
     @Override
     protected Bitmap doInBackground(Object... params) {
         imageView = (ImageView) params[0];
-        NewsDetailObject newsDetailObject = (NewsDetailObject) params[1];
-        if (newsDetailObject.getNewsImageId()<=0)
+//        FeedSummary newsDetailObject = (FeedSummary) params[1];
+//        if (newsDetailObject.getNewsImageId()<=0)
             return null;
-//        SharedPreferences prefs = imageView.getContext().getApplicationContext().getSharedPreferences("ir.appson.sportfeed", Context.MODE_PRIVATE);
-//        String sessionId = prefs.getString("sessionId", "");
-        String sessionId = ((Application9090)imageView.getContext().getApplicationContext()).getSessionId();
-        Bitmap result = NewsFeedProxy.getNewsImageThumbnail(newsDetailObject.getNewsImageId(), sessionId);
-        return result;
+//        String sessionId = ((Application9090)imageView.getContext().getApplicationContext()).getSessionId();
+//        Bitmap result = NewsFeedProxy.getNewsImageThumbnail(newsDetailObject.getNewsImageId(), sessionId);
+//        return result;
     }
 
     @Override
