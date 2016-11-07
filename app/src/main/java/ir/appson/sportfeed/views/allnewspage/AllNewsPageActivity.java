@@ -11,14 +11,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-
 import ir.appson.sportfeed.Application9090;
 import ir.appson.sportfeed.R;
+import ir.appson.sportfeed.proxy.dto.Feeds;
+import ir.appson.sportfeed.util.RetrofitHelper;
 import ir.appson.sportfeed.views.detail.NewsDetailWithViewPagerActivity;
-
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AllNewsPageActivity extends ActionBarActivity {
 
@@ -40,7 +42,6 @@ public class AllNewsPageActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_news_list_page);
-
         listView = (ListView) findViewById(R.id.listView);
         //FF Added to make the action bar RTL (right to left)
         forceRTLIfSupported();
@@ -58,21 +59,39 @@ public class AllNewsPageActivity extends ActionBarActivity {
                 startActivity(myIntent);
             }
         });
-
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             String feedName = bundle.getString("FeedName");
             channelId = bundle.getInt("FeedId");
             setTitle(feedName);
         }
-
         //FF for back button in action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);//???
 
 
         /**/
-        AllNewsPageRESTClient.getInstance().getFeeds();
+        /**/
+        final Call<Feeds> feeds = new RetrofitHelper().getRetrofit().feeds();
+        feeds.enqueue(new Callback<Feeds>() {
+            @Override
+            public void onResponse(Call<Feeds> call, Response<Feeds> response) {
+                if (response.isSuccessful()) {
+                    Feeds a = response.body();
+                    AllNewsPagerAdapter test;
+                    test = new AllNewsPagerAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.Feeds);
+                    listView.setAdapter(test);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Feeds> call, Throwable t) {
+                Log.e("REST", t.getMessage());
+            }
+        });
+        /**/
+        /**/
+//        AllNewsPageRESTClient.getInstance().getFeeds();
         new AllNewsPageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, this, listView);
         // Obtain the shared Tracker instance.
         Application9090 application = (Application9090) getApplication();
@@ -87,21 +106,17 @@ public class AllNewsPageActivity extends ActionBarActivity {
         }
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }
