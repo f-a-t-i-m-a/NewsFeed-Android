@@ -162,6 +162,7 @@ public class NewsDetailWithViewPagerActivity extends ActionBarActivity {
                     ProgressBar p = (ProgressBar) getActivity().findViewById(R.id.progressBar);
                     p.setVisibility(View.GONE);
 
+
                     if (response.isSuccessful()) {
                         News a = response.body();
                         Object a1 = response.body();
