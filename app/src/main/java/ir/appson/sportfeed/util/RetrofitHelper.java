@@ -42,4 +42,11 @@ public class RetrofitHelper {
                 .build();
         return retrofit.create(ChannelNewsAPIService.class);
     }
+    public ChannelNewsAPIService getRetrofitForDetail() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(BASE_URL)
+                .build();
+        return retrofit.create(ChannelNewsAPIService.class);
+    }
 }
