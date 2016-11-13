@@ -2,6 +2,8 @@ package ir.appson.sportfeed.dto;
 
 import android.graphics.Bitmap;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 /**

@@ -23,11 +23,14 @@ import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.google.gson.annotations.SerializedName;
 
 import ir.appson.sportfeed.Application9090;
 import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.dto.FeedDetail;
 import ir.appson.sportfeed.dto.FeedsNew;
+import ir.appson.sportfeed.dto.News;
+import ir.appson.sportfeed.dto.NewsDetail;
 import ir.appson.sportfeed.util.ArrayHelper;
 import ir.appson.sportfeed.util.RetrofitHelper;
 import ir.appson.sportfeed.views.allnewspage.AllNewsListAdapter;
@@ -152,22 +155,24 @@ public class NewsDetailWithViewPagerActivity extends ActionBarActivity {
 //            new NewsDetailAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, newsId, rootView.findViewById(R.id.activity_news_detail_relative_layout));
 //            new NewsDetailAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, newsId, rootView.findViewById(R.id.activity_news_detail_relative_layout));
             /**/
-            final Call<FeedDetail> feeds = new RetrofitHelper().getRetrofitForChannelNews().feeds();
-            feeds.enqueue(new Callback<FeedDetail>() {
+            final Call<News> feeds = new RetrofitHelper().getRetrofitForDetail().detail();
+            feeds.enqueue(new Callback<News>() {
                 @Override
-                public void onResponse(Call<FeedDetail> call, Response<FeedDetail> response) {
+                public void onResponse(Call<News> call, Response<News> response) {
                     ProgressBar p = (ProgressBar) getActivity().findViewById(R.id.progressBar);
                     p.setVisibility(View.GONE);
 
                     if (response.isSuccessful()) {
-                        FeedDetail a = response.body();
+                        News a = response.body();
+                        Object a1 = response.body();
+                        Object a2 = response.body();
 //                        AllNewsListAdapter test = new AllNewsListAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.Feeds.get(0).News);
 //                        listView.setAdapter(test);
                     }
                 }
 
                 @Override
-                public void onFailure(Call<FeedDetail> call, Throwable t) {
+                public void onFailure(Call<News> call, Throwable t) {
                     Log.e("REST", t.getMessage());
                 }
             });
