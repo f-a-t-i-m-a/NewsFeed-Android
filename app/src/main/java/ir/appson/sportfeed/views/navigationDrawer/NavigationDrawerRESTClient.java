@@ -1,6 +1,9 @@
 package ir.appson.sportfeed.views.navigationDrawer;
 
 import android.util.Log;
+
+import java.util.ArrayList;
+
 import ir.appson.sportfeed.proxy.dto.FeedSummary;
 import ir.appson.sportfeed.proxy.dto.Feeds;
 import retrofit2.Call;
@@ -9,32 +12,31 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import java.util.ArrayList;
-
 /**
  * Created by fatemeh on 11/6/2016.
  */
-
 public class NavigationDrawerRESTClient {
-
-    private static NavigationDrawerRESTClient instance = null;
-
-    private ResultReadyCallback callback;
-
     private static final String BASE_URL = "https://news.khoonat.com";
-    private NavigationDrawerAPIService service;
+    private static NavigationDrawerRESTClient instance = null;
     boolean success = false;
-
-
+    private ResultReadyCallback callback;
+    private NavigationDrawerAPIService service;
 
     public NavigationDrawerRESTClient() {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
                 .build();
-
         service = retrofit.create(NavigationDrawerAPIService.class);
     }
+
+    public static NavigationDrawerRESTClient getInstance() {
+        if (instance == null) {
+            instance = new NavigationDrawerRESTClient();
+        }
+        return instance;
+    }
+
     public ArrayList<FeedSummary> getFeeds(final NavigationDrawerFragment navigationDrawerFragment) {
         final Call<Feeds> feeds = service.feeds();
         feeds.enqueue(new Callback<Feeds>() {
@@ -43,7 +45,6 @@ public class NavigationDrawerRESTClient {
                 if (response.isSuccessful()) {
                     navigationDrawerFragment.populateYourself(response.body().Feeds);
 //                    callback.resultReady(response.body());
-
                 }
             }
 
@@ -58,14 +59,6 @@ public class NavigationDrawerRESTClient {
 
     public void setCallback(ResultReadyCallback callback) {
         this.callback = callback;
-    }
-
-
-    public static NavigationDrawerRESTClient getInstance() {
-        if(instance == null) {
-            instance = new NavigationDrawerRESTClient();
-        }
-        return instance;
     }
 
     public interface ResultReadyCallback {

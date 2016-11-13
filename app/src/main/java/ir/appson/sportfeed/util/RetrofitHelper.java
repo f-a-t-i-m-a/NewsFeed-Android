@@ -1,5 +1,6 @@
 package ir.appson.sportfeed.util;
 
+import ir.appson.sportfeed.views.allnewspage.AllNewsPageAPIService;
 import ir.appson.sportfeed.views.allnewspage.AllNewsPageRESTClient;
 import ir.appson.sportfeed.views.navigationDrawer.NavigationDrawerAPIService;
 import ir.appson.sportfeed.views.navigationDrawer.NavigationDrawerRESTClient;
@@ -23,5 +24,12 @@ public class RetrofitHelper {
                 .build();
         service = retrofit.create(NavigationDrawerAPIService.class);
         return service;
+    }
+    public AllNewsPageAPIService getRetrofitForAllNews() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(BASE_URL)
+                .build();
+        return retrofit.create(AllNewsPageAPIService.class);
     }
 }

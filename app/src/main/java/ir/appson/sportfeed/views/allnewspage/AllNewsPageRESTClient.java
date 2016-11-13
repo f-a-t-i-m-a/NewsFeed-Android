@@ -1,8 +1,9 @@
 package ir.appson.sportfeed.views.allnewspage;
 
 import android.util.Log;
+
+import ir.appson.sportfeed.dto.FeedsNew;
 import ir.appson.sportfeed.proxy.dto.FeedSummary;
-import ir.appson.sportfeed.proxy.dto.Feeds;
 import ir.appson.sportfeed.views.navigationDrawer.NavigationDrawerAPIService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,7 +24,7 @@ public class AllNewsPageRESTClient {
     private ResultReadyCallback callback;
 
     private static final String BASE_URL = "https://news.khoonat.com";
-    private NavigationDrawerAPIService service;
+    private AllNewsPageAPIService service;
     boolean success = false;
 
 
@@ -34,13 +35,13 @@ public class AllNewsPageRESTClient {
                 .baseUrl(BASE_URL)
                 .build();
 
-        service = retrofit.create(NavigationDrawerAPIService.class);
+        service = retrofit.create(AllNewsPageAPIService.class);
     }
     public ArrayList<FeedSummary> getFeeds() {
-        final Call<Feeds> feeds = service.feeds();
-        feeds.enqueue(new Callback<Feeds>() {
+        final Call<FeedsNew> feeds = service.feeds();
+        feeds.enqueue(new Callback<FeedsNew>() {
             @Override
-            public void onResponse(Call<Feeds> call, Response<Feeds> response) {
+            public void onResponse(Call<FeedsNew> call, Response<FeedsNew> response) {
                 if (response.isSuccessful()) {
                     callback.resultReady(response.body());
 
@@ -48,7 +49,7 @@ public class AllNewsPageRESTClient {
             }
 
             @Override
-            public void onFailure(Call<Feeds> call, Throwable t) {
+            public void onFailure(Call<FeedsNew> call, Throwable t) {
                 Log.e("REST", t.getMessage());
             }
 
@@ -69,7 +70,7 @@ public class AllNewsPageRESTClient {
     }
 
     public interface ResultReadyCallback {
-        public void resultReady(Feeds users);
+        public void resultReady(FeedsNew users);
     }
 
 }

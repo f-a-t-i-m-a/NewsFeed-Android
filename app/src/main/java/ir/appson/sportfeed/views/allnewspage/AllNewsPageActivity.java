@@ -2,28 +2,29 @@ package ir.appson.sportfeed.views.allnewspage;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+
 import ir.appson.sportfeed.Application9090;
 import ir.appson.sportfeed.R;
-import ir.appson.sportfeed.proxy.dto.Feeds;
+import ir.appson.sportfeed.dto.FeedsNew;
 import ir.appson.sportfeed.util.RetrofitHelper;
 import ir.appson.sportfeed.views.detail.NewsDetailWithViewPagerActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AllNewsPageActivity extends ActionBarActivity {
-
+public class AllNewsPageActivity extends AppCompatActivity {
     static int STATIC_INT = 1;//This is used for startActivityForResult
     ListView listView;
     int[] newsListIds;
@@ -43,9 +44,7 @@ public class AllNewsPageActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_news_list_page);
         listView = (ListView) findViewById(R.id.listView);
-        //FF Added to make the action bar RTL (right to left)
         forceRTLIfSupported();
-        //FF
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -65,27 +64,21 @@ public class AllNewsPageActivity extends ActionBarActivity {
             channelId = bundle.getInt("FeedId");
             setTitle(feedName);
         }
-        //FF for back button in action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);//???
-
-
-        /**/
-        /**/
-        final Call<Feeds> feeds = new RetrofitHelper().getRetrofit().feeds();
-        feeds.enqueue(new Callback<Feeds>() {
+        final Call<FeedsNew> feeds = new RetrofitHelper().getRetrofitForAllNews().feeds();
+        feeds.enqueue(new Callback<FeedsNew>() {
             @Override
-            public void onResponse(Call<Feeds> call, Response<Feeds> response) {
+            public void onResponse(Call<FeedsNew> call, Response<FeedsNew> response) {
                 if (response.isSuccessful()) {
-                    Feeds a = response.body();
-                    AllNewsPagerAdapter test;
-                    test = new AllNewsPagerAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.Feeds);
+                    FeedsNew a = response.body();
+                    AllNewsListAdapter test = new AllNewsListAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.Feeds.get(0).News);
                     listView.setAdapter(test);
                 }
             }
 
             @Override
-            public void onFailure(Call<Feeds> call, Throwable t) {
+            public void onFailure(Call<FeedsNew> call, Throwable t) {
                 Log.e("REST", t.getMessage());
             }
         });
