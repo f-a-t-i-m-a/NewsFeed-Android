@@ -4,8 +4,8 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import ir.appson.sportfeed.proxy.dto.FeedSummary;
-import ir.appson.sportfeed.proxy.dto.Feeds;
+import ir.appson.sportfeed.dto.FeedDetail;
+import ir.appson.sportfeed.dto.FeedsNew;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,19 +37,19 @@ public class NavigationDrawerRESTClient {
         return instance;
     }
 
-    public ArrayList<FeedSummary> getFeeds(final NavigationDrawerFragment navigationDrawerFragment) {
-        final Call<Feeds> feeds = service.feeds();
-        feeds.enqueue(new Callback<Feeds>() {
+    public ArrayList<FeedDetail> getFeeds(final NavigationDrawerFragment navigationDrawerFragment) {
+        final Call<FeedsNew> feeds = service.feeds();
+        feeds.enqueue(new Callback<FeedsNew>() {
             @Override
-            public void onResponse(Call<Feeds> call, Response<Feeds> response) {
+            public void onResponse(Call<FeedsNew> call, Response<FeedsNew> response) {
                 if (response.isSuccessful()) {
-                    navigationDrawerFragment.populateYourself(response.body().Feeds);
+                    navigationDrawerFragment.populateYourself((ArrayList<FeedDetail>) response.body().Feeds);
 //                    callback.resultReady(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<Feeds> call, Throwable t) {
+            public void onFailure(Call<FeedsNew> call, Throwable t) {
                 Log.e("REST", t.getMessage());
             }
 
@@ -62,7 +62,7 @@ public class NavigationDrawerRESTClient {
     }
 
     public interface ResultReadyCallback {
-        public void resultReady(Feeds users);
+        public void resultReady(FeedsNew users);
     }
 
 }

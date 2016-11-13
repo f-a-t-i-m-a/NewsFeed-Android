@@ -87,8 +87,8 @@ public class NewsListActivity extends ActionBarActivity
             Intent myIntent = new Intent(NewsListActivity.this, ChannelPageActivity.class);
             Bundle bundle = new Bundle();
 
-            bundle.putString("FeedName", mNavigationDrawerFragment.getFeedSummary(position).getTitle());
-            bundle.putInt("FeedId", mNavigationDrawerFragment.getFeedSummary(position).getID());
+            bundle.putString("FeedName", mNavigationDrawerFragment.getFeedSummary(position).Title);
+            bundle.putInt("FeedId", mNavigationDrawerFragment.getFeedSummary(position).ID);
             myIntent.putExtras(bundle);
             startActivity(myIntent);
         }

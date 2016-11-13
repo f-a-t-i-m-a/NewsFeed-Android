@@ -1,7 +1,6 @@
 package ir.appson.sportfeed.views.allnewspage;
 
 import ir.appson.sportfeed.dto.FeedsNew;
-import ir.appson.sportfeed.proxy.dto.Feeds;
 import retrofit2.Call;
 import retrofit2.http.GET;
 

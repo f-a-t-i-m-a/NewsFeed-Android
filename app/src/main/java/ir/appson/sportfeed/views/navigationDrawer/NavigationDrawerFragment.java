@@ -15,32 +15,25 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
-import ir.appson.sportfeed.proxy.dto.Feeds;
-import ir.appson.sportfeed.R;
-import ir.appson.sportfeed.proxy.dto.FeedSummary;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Fragment used for managing interactions for and presentation of a navigation drawer.
- * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
- * design guidelines</a> for a complete explanation of the behaviors implemented here.
- */
+import ir.appson.sportfeed.R;
+import ir.appson.sportfeed.dto.FeedDetail;
+
 public class NavigationDrawerFragment extends Fragment {
-
-    /**
-     * Remember the position of the selected item.
-     */
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
-    /**
-     * Per the design guidelines, you should show the drawer on launch until the user manually
-     * expands it. This shared preference tracks this.
-     */
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
     public ListView mDrawerListView;
     //FF
-    public ArrayList<FeedSummary> mNewsChannelsObjects = new ArrayList<FeedSummary>();
+    public List<FeedDetail> mNewsChannelsObjects = new ArrayList<FeedDetail>();
     /**
      * A pointer to the current callbacks instance (the Activity).
      */
@@ -51,7 +44,6 @@ public class NavigationDrawerFragment extends Fragment {
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
     private View mFragmentContainerView;
-
     private int mCurrentSelectedPosition = 0;
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
@@ -59,10 +51,10 @@ public class NavigationDrawerFragment extends Fragment {
     public NavigationDrawerFragment() {
     }
 
-    public void populateYourself(ArrayList<FeedSummary> feeds) {
+    public void populateYourself(List<FeedDetail> feeds) {
         ArrayList<String> channelsNamesList = new ArrayList<>();
-        for(FeedSummary channelObject : feeds)
-            channelsNamesList.add(channelObject.getTitle());
+        for (FeedDetail channelObject : feeds)
+            channelsNamesList.add(channelObject.Title);
         channelsNamesList.add(0, getResources().getString(R.string.home_persian));
         channelsNamesList.add(1, getResources().getString(R.string.all_channels_persian));
         channelsNamesList.add(channelsNamesList.size(), getResources().getString(R.string.support_national_team_persian));
@@ -99,7 +91,7 @@ public class NavigationDrawerFragment extends Fragment {
         // Indicate that this fragment would like to influence the set of actions in the action bar.
         setHasOptionsMenu(true);
         //FF For async
-                                                                                                           NavigationDrawerRESTClient.getInstance().getFeeds(this);
+        NavigationDrawerRESTClient.getInstance().getFeeds(this);
 //        new NavigationDrawerAsync(getActivity(), this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
@@ -263,7 +255,7 @@ public class NavigationDrawerFragment extends Fragment {
         return ((ActionBarActivity) getActivity()).getSupportActionBar();
     }
 
-    public FeedSummary getFeedSummary(int positionInList) {
+    public FeedDetail getFeedSummary(int positionInList) {
         positionInList -= 2;
         if (0 <= positionInList && positionInList < mNewsChannelsObjects.size()) {
             return mNewsChannelsObjects.get(positionInList);

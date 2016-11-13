@@ -2,8 +2,8 @@ package ir.appson.sportfeed.views.allnewspage;
 
 import android.util.Log;
 
+import ir.appson.sportfeed.dto.FeedDetail;
 import ir.appson.sportfeed.dto.FeedsNew;
-import ir.appson.sportfeed.proxy.dto.FeedSummary;
 import ir.appson.sportfeed.views.navigationDrawer.NavigationDrawerAPIService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,7 +37,7 @@ public class AllNewsPageRESTClient {
 
         service = retrofit.create(AllNewsPageAPIService.class);
     }
-    public ArrayList<FeedSummary> getFeeds() {
+    public ArrayList<FeedDetail> getFeeds() {
         final Call<FeedsNew> feeds = service.feeds();
         feeds.enqueue(new Callback<FeedsNew>() {
             @Override
