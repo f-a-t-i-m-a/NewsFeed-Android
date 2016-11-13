@@ -33,7 +33,7 @@ public class AllNewsListAdapter extends ArrayAdapter<NewsDetail> {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View row = inflater.inflate(R.layout.single_row, parent, false);
-        NewsDetail newsDetailObject = list.get(position);
+        NewsDetail newsDetail = list.get(position);
         ImageView imageView = (ImageView) row.findViewById(R.id.imageViewNewsThumbnail);
         TextView title = (TextView) row.findViewById(R.id.textViewTitle);
         TextView newsResource = (TextView) row.findViewById(R.id.textView_single_row_newsResource);
@@ -43,13 +43,13 @@ public class AllNewsListAdapter extends ArrayAdapter<NewsDetail> {
         Bitmap bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.thumbnail_loading);
         imageView.setImageBitmap(ImageHelper.getRoundedCornerBitmap(bitmap, getContext().getResources().getDisplayMetrics()));
 //        new ChannelPageThumbnailImageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, imageView, newsDetailObject);
-        title.setText(newsDetailObject.Title);
+        title.setText(newsDetail.Title);
 //        newsResource.setText(newsDetailObject.getNewsReference());
         newsResource.setPadding(0, 15, 10, 0);
 //        dateTime.setText(newsDetailObject.getJalaliDateTime());
         dateTime.setPadding(0, 15, 10, 0);
         //FF here we setTag to the newsId so we can retrieve it in itemClickListener and pass it to the NewsDetailActivity.
-        row.setTag(newsDetailObject.ID);
+        row.setTag(newsDetail.ID);
         return row;
     }
 }

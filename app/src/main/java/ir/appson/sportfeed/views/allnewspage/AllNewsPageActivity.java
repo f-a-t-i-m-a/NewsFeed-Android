@@ -18,6 +18,7 @@ import com.google.android.gms.analytics.Tracker;
 import ir.appson.sportfeed.Application9090;
 import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.dto.FeedsNew;
+import ir.appson.sportfeed.util.ArrayHelper;
 import ir.appson.sportfeed.util.RetrofitHelper;
 import ir.appson.sportfeed.views.detail.NewsDetailWithViewPagerActivity;
 import retrofit2.Call;
@@ -65,7 +66,7 @@ public class AllNewsPageActivity extends AppCompatActivity {
             setTitle(feedName);
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);//???
+        getSupportActionBar().setHomeButtonEnabled(true);
         final Call<FeedsNew> feeds = new RetrofitHelper().getRetrofitForAllNews().feeds();
         feeds.enqueue(new Callback<FeedsNew>() {
             @Override
@@ -74,6 +75,7 @@ public class AllNewsPageActivity extends AppCompatActivity {
                     FeedsNew a = response.body();
                     AllNewsListAdapter test = new AllNewsListAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.Feeds.get(0).News);
                     listView.setAdapter(test);
+                    newsListIds = ArrayHelper.extractIds2(a.Feeds.get(0).News);
                 }
             }
 
@@ -86,7 +88,6 @@ public class AllNewsPageActivity extends AppCompatActivity {
         mTracker = application.getDefaultTracker();
     }
 
-    //FF added to make the action bar RTL
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void forceRTLIfSupported() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {

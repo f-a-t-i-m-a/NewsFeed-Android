@@ -11,4 +11,5 @@ public class NewsDetail {
     public Integer ID;
     public String Title;
     public String Summary;
+    public String Text;
 }
