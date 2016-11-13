@@ -9,7 +9,7 @@ import retrofit2.http.GET;
  */
 public interface NewsDetailAPIService {
 
-    @GET("/api/mobile/news/18/details\n")
+    @GET("/api/mobile/news/18/details")
     Call<FeedDetail> feeds();
 }
 
