@@ -11,5 +11,7 @@ public class FeedDetail {
     public Integer ID;
     public Bitmap[] TumbnailBytes;
     public String Title;
-    public ArrayList<NewsDetail> News;
+    public ArrayList<NewsDetail> News;//for allnews
+    public ArrayList<NewsDetail> NewsList;//for channel
+
 }

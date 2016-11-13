@@ -7,5 +7,6 @@ import java.util.List;
  * Created by fatemeh on 11/13/2016.
  */
 public class FeedsNew {
-    public List<FeedDetail> Feeds;
+    public List<FeedDetail> Feeds;//for all news
+
 }

@@ -10,7 +10,7 @@ import retrofit2.http.GET;
  */
 public interface ChannelNewsAPIService {
 
-    @GET("/api/mobile/feed/list/all")
+    @GET("/api/mobile/feed/1/news/list/all")
     Call<FeedDetail> feeds();
 }
 

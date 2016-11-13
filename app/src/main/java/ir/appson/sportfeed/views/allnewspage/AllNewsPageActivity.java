@@ -4,13 +4,13 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -43,7 +43,7 @@ public class AllNewsPageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_news_list_page);
+        setContentView(R.layout.activity_all_news);
         listView = (ListView) findViewById(R.id.listView);
         forceRTLIfSupported();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -72,6 +72,8 @@ public class AllNewsPageActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<FeedsNew> call, Response<FeedsNew> response) {
                 if (response.isSuccessful()) {
+                    ProgressBar p = (ProgressBar) findViewById(R.id.progressBar);
+                    p.setVisibility(View.GONE);
                     FeedsNew a = response.body();
                     AllNewsListAdapter test = new AllNewsListAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.Feeds.get(0).News);
                     listView.setAdapter(test);

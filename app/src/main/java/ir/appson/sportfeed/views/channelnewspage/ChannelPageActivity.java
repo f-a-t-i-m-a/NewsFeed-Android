@@ -12,11 +12,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import ir.appson.sportfeed.Application9090;
 import ir.appson.sportfeed.R;
+import ir.appson.sportfeed.dto.FeedDetail;
+import ir.appson.sportfeed.dto.FeedsNew;
+import ir.appson.sportfeed.util.ArrayHelper;
+import ir.appson.sportfeed.util.RetrofitHelper;
+import ir.appson.sportfeed.views.allnewspage.AllNewsListAdapter;
 import ir.appson.sportfeed.views.detail.NewsDetailWithViewPagerActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ChannelPageActivity extends ActionBarActivity {
 
@@ -69,8 +79,26 @@ public class ChannelPageActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);//???
 
 
-        new ChannelPageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, this);
+        final Call<FeedDetail> feeds = new RetrofitHelper().getRetrofitForChannelNews().feeds();
+        feeds.enqueue(new Callback<FeedDetail>() {
+            @Override
+            public void onResponse(Call<FeedDetail> call, Response<FeedDetail> response) {
+                if (response.isSuccessful()) {
+                    ProgressBar p = (ProgressBar) findViewById(R.id.progressBar);
+                    p.setVisibility(View.GONE);
 
+                    FeedDetail a = response.body();
+                    ChannelNewsListAdapter test = new ChannelNewsListAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.NewsList);
+                    list.setAdapter(test);
+                    newsListIds = ArrayHelper.extractIds2(a.NewsList);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FeedDetail> call, Throwable t) {
+                Log.e("REST", t.getMessage());
+            }
+        });
         // Obtain the shared Tracker instance.
         Application9090 application = (Application9090) getApplication();
         mTracker = application.getDefaultTracker();

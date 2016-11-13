@@ -64,7 +64,7 @@ public class FirstPageAsync extends AsyncTask<Object, Object, ArrayList<TripleNe
 
     private void populateChannelsAndNews(ArrayList<TripleNewsForFirstPage> channels) {
         LinearLayout l = (LinearLayout) scrollView.findViewById(R.id.linearLayout_firstPage_channels);
-        scrollView.findViewById(R.id.progressBar_fragment_news_list).setVisibility(View.GONE);
+        scrollView.findViewById(R.id.progressBar).setVisibility(View.GONE);
 
         if (l.getChildCount() > 0)
             l.removeAllViews();

@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
@@ -155,6 +156,9 @@ public class NewsDetailWithViewPagerActivity extends ActionBarActivity {
             feeds.enqueue(new Callback<FeedDetail>() {
                 @Override
                 public void onResponse(Call<FeedDetail> call, Response<FeedDetail> response) {
+                    ProgressBar p = (ProgressBar) getActivity().findViewById(R.id.progressBar);
+                    p.setVisibility(View.GONE);
+
                     if (response.isSuccessful()) {
                         FeedDetail a = response.body();
 //                        AllNewsListAdapter test = new AllNewsListAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.Feeds.get(0).News);
