@@ -82,8 +82,6 @@ public class AllNewsPageActivity extends AppCompatActivity {
                 Log.e("REST", t.getMessage());
             }
         });
-        /**/
-        /**/
         Application9090 application = (Application9090) getApplication();
         mTracker = application.getDefaultTracker();
     }
