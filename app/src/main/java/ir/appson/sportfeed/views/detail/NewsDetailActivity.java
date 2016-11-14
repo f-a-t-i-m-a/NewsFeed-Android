@@ -3,15 +3,13 @@ package ir.appson.sportfeed.views.detail;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,22 +21,16 @@ import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-import com.google.gson.annotations.SerializedName;
-
 import ir.appson.sportfeed.Application9090;
 import ir.appson.sportfeed.R;
-import ir.appson.sportfeed.dto.FeedDetail;
-import ir.appson.sportfeed.dto.FeedsNew;
 import ir.appson.sportfeed.dto.News;
-import ir.appson.sportfeed.dto.NewsDetail;
 import ir.appson.sportfeed.util.ArrayHelper;
 import ir.appson.sportfeed.util.RetrofitHelper;
-import ir.appson.sportfeed.views.allnewspage.AllNewsListAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NewsDetailWithViewPagerActivity extends ActionBarActivity {
+public class NewsDetailActivity extends AppCompatActivity {
     MyFragmentStatePagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
     private Tracker mTracker;
@@ -117,7 +109,7 @@ public class NewsDetailWithViewPagerActivity extends ActionBarActivity {
     }
 
     private void shareIt() {
-        TextView tv = (TextView) findViewById(R.id.textView_newsDetailActivity_newsTitle);
+        TextView tv = (TextView) findViewById(R.id.textView_newsTitle);
         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
         String text = tv.getText() +
@@ -151,7 +143,7 @@ public class NewsDetailWithViewPagerActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             int newsId = getArguments().getInt("newsId");
-            View rootView = inflater.inflate(R.layout.fragment_news_detail_with_view_pager, container, false);
+            final View rootView = inflater.inflate(R.layout.fragment_news_detail_with_view_pager, container, false);
 //            new NewsDetailAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, newsId, rootView.findViewById(R.id.activity_news_detail_relative_layout));
 //            new NewsDetailAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, newsId, rootView.findViewById(R.id.activity_news_detail_relative_layout));
             /**/
@@ -165,8 +157,10 @@ public class NewsDetailWithViewPagerActivity extends ActionBarActivity {
 
                     if (response.isSuccessful()) {
                         News a = response.body();
-                        Object a1 = response.body();
-                        Object a2 = response.body();
+                        TextView t = (TextView) rootView.findViewById(R.id.textView_newsTitle);
+                        t.setText(a.News.Title);
+                        TextView t1 = (TextView) rootView.findViewById(R.id.textView_newsText);
+                        t1.setText(a.News.Text);
 //                        AllNewsListAdapter test = new AllNewsListAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.Feeds.get(0).News);
 //                        listView.setAdapter(test);
                     }

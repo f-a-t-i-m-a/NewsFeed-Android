@@ -3,7 +3,6 @@ package ir.appson.sportfeed.views.channelnewspage;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -19,11 +18,9 @@ import com.google.android.gms.analytics.Tracker;
 import ir.appson.sportfeed.Application9090;
 import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.dto.FeedDetail;
-import ir.appson.sportfeed.dto.FeedsNew;
 import ir.appson.sportfeed.util.ArrayHelper;
 import ir.appson.sportfeed.util.RetrofitHelper;
-import ir.appson.sportfeed.views.allnewspage.AllNewsListAdapter;
-import ir.appson.sportfeed.views.detail.NewsDetailWithViewPagerActivity;
+import ir.appson.sportfeed.views.detail.NewsDetailActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -48,7 +45,7 @@ public class ChannelPageActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_channel_news_feed);
+        setContentView(R.layout.activity_channel_news);
         list = (ListView) findViewById(R.id.listView);
         //FF Added to make the action bar RTL (right to left)
         forceRTLIfSupported();
@@ -56,7 +53,7 @@ public class ChannelPageActivity extends ActionBarActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent myIntent = new Intent(ChannelPageActivity.this, NewsDetailWithViewPagerActivity.class);
+                Intent myIntent = new Intent(ChannelPageActivity.this, NewsDetailActivity.class);
                 int newsId = (int) view.getTag();
                 Bundle bundle = new Bundle();
                 bundle.putInt("channelId", channelId);

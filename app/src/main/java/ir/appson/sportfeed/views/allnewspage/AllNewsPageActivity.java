@@ -20,7 +20,7 @@ import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.dto.FeedsNew;
 import ir.appson.sportfeed.util.ArrayHelper;
 import ir.appson.sportfeed.util.RetrofitHelper;
-import ir.appson.sportfeed.views.detail.NewsDetailWithViewPagerActivity;
+import ir.appson.sportfeed.views.detail.NewsDetailActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,7 +49,7 @@ public class AllNewsPageActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent myIntent = new Intent(AllNewsPageActivity.this, NewsDetailWithViewPagerActivity.class);
+                Intent myIntent = new Intent(AllNewsPageActivity.this, NewsDetailActivity.class);
                 int newsId = (int) view.getTag();
                 Bundle bundle = new Bundle();
                 bundle.putInt("channelId", channelId);

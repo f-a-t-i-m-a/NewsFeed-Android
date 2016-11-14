@@ -8,11 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.dto.NewsDetail;
-import ir.appson.sportfeed.util.ImageHelper;
 
 import java.util.ArrayList;
 
@@ -34,14 +32,16 @@ public class AllNewsListAdapter extends ArrayAdapter<NewsDetail> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View row = inflater.inflate(R.layout.single_row, parent, false);
         NewsDetail newsDetail = list.get(position);
-        ImageView imageView = (ImageView) row.findViewById(R.id.imageViewNewsThumbnail);
+        /*DO NOT DELETE*/
+        /*ImageView imageView = (ImageView) row.findViewById(R.id.imageViewNewsThumbnail);*/
         TextView title = (TextView) row.findViewById(R.id.textViewTitle);
         TextView newsResource = (TextView) row.findViewById(R.id.textView_single_row_newsResource);
         TextView dateTime = (TextView) row.findViewById(R.id.textView_single_row_dateTime);
         title.setPadding(0, 15, 10, 0);
         title.setTextColor(Color.BLACK);
         Bitmap bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.thumbnail_loading);
-        imageView.setImageBitmap(ImageHelper.getRoundedCornerBitmap(bitmap, getContext().getResources().getDisplayMetrics()));
+        /*DO NOT DELETE*/
+/*        imageView.setImageBitmap(ImageHelper.getRoundedCornerBitmap(bitmap, getContext().getResources().getDisplayMetrics()));*/
 //        new ChannelPageThumbnailImageAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, imageView, newsDetailObject);
         title.setText(newsDetail.Title);
 //        newsResource.setText(newsDetailObject.getNewsReference());

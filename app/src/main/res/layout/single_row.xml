@@ -12,14 +12,14 @@
     android:paddingBottom="10dp"
     android:paddingTop="10dp">
 
-
-    <ImageView
+    <!--DO NOT DELETE-->
+   <!-- <ImageView
         android:id="@+id/imageViewNewsThumbnail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:padding="10dp"
-        android:src="@drawable/thumbnail_loading" />
+        android:src="@drawable/thumbnail_loading" />-->
 
     <LinearLayout
         android:layout_width="match_parent"

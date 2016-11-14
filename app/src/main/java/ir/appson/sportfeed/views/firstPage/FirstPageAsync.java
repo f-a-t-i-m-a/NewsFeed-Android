@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.*;
 import ir.appson.sportfeed.views.channelnewspage.ChannelPageActivity;
 import ir.appson.sportfeed.views.channelnewspage.ChannelPageThumbnailImageAsync;
-import ir.appson.sportfeed.views.detail.NewsDetailWithViewPagerActivity;
+import ir.appson.sportfeed.views.detail.NewsDetailActivity;
 import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.proxy.FeedsWithNewsProxy;
 import ir.appson.sportfeed.proxy.dto.NewsDetailObject;
@@ -126,7 +126,7 @@ public class FirstPageAsync extends AsyncTask<Object, Object, ArrayList<TripleNe
                 rowLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent myIntent = new Intent(context, NewsDetailWithViewPagerActivity.class);
+                        Intent myIntent = new Intent(context, NewsDetailActivity.class);
                         int newsId = (int) view.getTag();
                         Bundle bundle = new Bundle();
                         bundle.putInt("newsId", newsId);
@@ -161,7 +161,7 @@ public class FirstPageAsync extends AsyncTask<Object, Object, ArrayList<TripleNe
                     @Override
                     public void onClick(View view) {
 //                        Intent myIntent = new Intent(context, NewsDetailActivity.class);
-                        Intent myIntent = new Intent(context, NewsDetailWithViewPagerActivity.class);
+                        Intent myIntent = new Intent(context, NewsDetailActivity.class);
                         int newsId = (int) view.getTag();
                         Bundle bundle = new Bundle();
                         bundle.putInt("newsId", newsId);
@@ -195,7 +195,7 @@ public class FirstPageAsync extends AsyncTask<Object, Object, ArrayList<TripleNe
                 rowLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent myIntent = new Intent(context, NewsDetailWithViewPagerActivity.class);
+                        Intent myIntent = new Intent(context, NewsDetailActivity.class);
                         int newsId = (int) view.getTag();
                         Bundle bundle = new Bundle();
                         bundle.putInt("newsId", newsId);

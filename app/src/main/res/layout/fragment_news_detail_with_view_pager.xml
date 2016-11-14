@@ -30,7 +30,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:id="@+id/textView_newsDetailActivity_newsResource" android:layout_gravity="right"/>
+                        android:id="@+id/textView_newsResource" android:layout_gravity="right"/>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -41,8 +41,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:id="@+id/textView_newsDetailActivity_newsTitle" android:layout_gravity="right"/>
-            <ImageView
+                    android:id="@+id/textView_newsTitle" android:layout_gravity="right"/>
+   <!--         <ImageView
 
                     android:layout_width="400dp"
                     android:layout_height="250dp"
@@ -50,18 +50,18 @@
                     android:paddingTop="20dp"
                     android:paddingBottom="20dp"
                     android:src="@drawable/fullsize_loading"
-                    android:id="@+id/imageView_newsDetailActivity" android:layout_gravity="center"/>
+                    android:id="@+id/imageView" android:layout_gravity="center"/>-->
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/textView_newsDetailActivity_newsSummary" android:layout_gravity="right"/>
+                    android:id="@+id/textView_newsSummary" android:layout_gravity="right"/>
             <TextView
                     android:paddingTop="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:id="@+id/textView_newsDetailActivity_newsDescription"
+                    android:id="@+id/textView_newsText"
                     android:textDirection="rtl"
                     android:gravity="right"
                     android:layout_gravity="right"/>

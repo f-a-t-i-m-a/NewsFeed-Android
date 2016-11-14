@@ -7,7 +7,6 @@ import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
@@ -30,18 +29,11 @@ public class SupportNationalTeamActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_support_national_team);
-
-//        Uri sms_uri = Uri.parse("smsto:+92122198789");
-//        Intent sms_intent = new Intent(Intent.ACTION_SENDTO, sms_uri);
-//        sms_intent.putExtra("sms_body", "support national team");
-//        startActivity(sms_intent);
-
         forceRTLIfSupported();
-        //FF for back button in action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);//???
 
-        ((WebView)findViewById(R.id.webView_activity_support_national_team)).loadUrl(Application9090.SUPPORT_NATIONAL_TEAM_URL);
+        ((WebView)findViewById(R.id.webView_activity_support_national_team)).loadUrl(Application9090.REPORT_SUGGESTION);
         ((Button)findViewById(R.id.button_activity_support_national_team)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

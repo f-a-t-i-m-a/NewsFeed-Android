@@ -24,8 +24,7 @@ import ir.appson.sportfeed.views.channelnewspage.ChannelPageActivity;
 import ir.appson.sportfeed.views.navigationDrawer.NavigationDrawerFragment;
 
 
-public class NewsListActivity extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks{
+public class FirstPageActivity extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private Tracker mTracker;
@@ -39,14 +38,14 @@ public class NewsListActivity extends ActionBarActivity
     protected void onResume() {
         super.onResume();
         Log.i("TAG", "Setting screen name: " + " news list page");
-        mTracker.setScreenName("NewsListActivity " + "news list page");
+        mTracker.setScreenName("FirstPageActivity " + "news list page");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_news_list);
+        setContentView(R.layout.activity_first_page);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
@@ -84,7 +83,7 @@ public class NewsListActivity extends ActionBarActivity
 //        alaki.equals("");
 
         if (mNavigationDrawerFragment!=null && mNavigationDrawerFragment.getFeedSummary(position)!= null && 2<= position && position <= mNavigationDrawerFragment.mNewsChannelsObjects.size()+1){
-            Intent myIntent = new Intent(NewsListActivity.this, ChannelPageActivity.class);
+            Intent myIntent = new Intent(FirstPageActivity.this, ChannelPageActivity.class);
             Bundle bundle = new Bundle();
 
             bundle.putString("FeedName", mNavigationDrawerFragment.getFeedSummary(position).Title);
@@ -99,7 +98,7 @@ public class NewsListActivity extends ActionBarActivity
                     .commit();
         }
         else if (position ==1){
-            Intent myIntent = new Intent(NewsListActivity.this, AllNewsPageActivity.class);
+            Intent myIntent = new Intent(FirstPageActivity.this, AllNewsPageActivity.class);
             Bundle bundle = new Bundle();
             bundle.putString("FeedName", getString(R.string.all_news_persian));
             bundle.putInt("FeedId", 0);
@@ -107,18 +106,18 @@ public class NewsListActivity extends ActionBarActivity
             startActivity(myIntent);
         }
         else if (position==mNavigationDrawerFragment.mNewsChannelsObjects.size()+2){
-            Intent myIntent = new Intent(NewsListActivity.this, SupportNationalTeamActivity.class);
+            Intent myIntent = new Intent(FirstPageActivity.this, SupportNationalTeamActivity.class);
             startActivity(myIntent);
         }
         else if (position==mNavigationDrawerFragment.mNewsChannelsObjects.size()+3){
             shareIt();
         }
         else if (position==mNavigationDrawerFragment.mNewsChannelsObjects.size()+4){
-            Intent myIntent = new Intent(NewsListActivity.this, CustomerSupportActivity.class);
+            Intent myIntent = new Intent(FirstPageActivity.this, CustomerSupportActivity.class);
             startActivity(myIntent);
         }
         else if (position==mNavigationDrawerFragment.mNewsChannelsObjects.size()+5){
-            Intent myIntent = new Intent(NewsListActivity.this, AboutUsActivity.class);
+            Intent myIntent = new Intent(FirstPageActivity.this, AboutUsActivity.class);
             startActivity(myIntent);
         }
 
@@ -189,7 +188,7 @@ public class NewsListActivity extends ActionBarActivity
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            ((NewsListActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
+            ((FirstPageActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
 

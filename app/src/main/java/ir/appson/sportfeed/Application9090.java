@@ -3,11 +3,9 @@ package ir.appson.sportfeed;
 import android.app.Application;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
-
-import org.acra.ACRA;
+//import org.acra.ACRA;
 
 import java.util.UUID;
 //
@@ -19,20 +17,17 @@ import java.util.UUID;
 //)
 
 public class Application9090 extends Application {
-    private Tracker mTracker;
-
     @Deprecated // Should be replaced by non-static getUserAgentString
-    public static String userAgent = "ir.appson.sportfeed;0.0.0";
-
+    public static String userAgent = "news.khoonat.com;0.0.0";
     public static String SESSION_ID = "X-JJ-SessionId";
     public static String USER_AGENT = "X-JJ-UserAgent";
-    public static String ABOUT_US_URL = "http://teammelli.ir/download/html/about.html";
-    public static String CUSTOMER_SUPPORT_URL = "http://teammelli.ir/download/html/support.html";
-    public static String SUPPORT_NATIONAL_TEAM_URL = "http://teammelli.ir/download/html/subscribe.html";
-
+    public static String ABOUT_US_URL = "http://www.khoonat.com/home/page/about";
+    public static String CUSTOMER_SUPPORT_URL = "http://www.khoonat.com/userfeedback/contactus";
+    public static String REPORT_SUGGESTION = "http://www.khoonat.com/userfeedback/reportsuggestion";
+    private Tracker mTracker;
     private String sessionId = "";
     private boolean sessionStarted = false;
-    private String userAgentString = "ir.appson.sportfeed;0.0.0";
+    private String userAgentString = "news.khoonat.com;0.0.0";
 
     synchronized public Tracker getDefaultTracker() {
         if (mTracker == null) {
@@ -46,10 +41,8 @@ public class Application9090 extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         initializeUserAgentString();
         initializeSessionId();
-        ACRA.init(this);
     }
 
     public String getUserAgentString() {
@@ -76,7 +69,6 @@ public class Application9090 extends Application {
         try {
             PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
             String version = pInfo.versionName;
-
             userAgentString = getPackageName() + ";" + version;
             userAgent = userAgentString; // TODO Temporary; remove this line after removing the userAgent static field
         } catch (PackageManager.NameNotFoundException e) {
