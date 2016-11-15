@@ -1,8 +1,11 @@
 package ir.appson.sportfeed.views.newfirstpage;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -33,14 +36,30 @@ public class NewMainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private int mCurrentSelectedPosition = 0;
+    ActionBarDrawerToggle mDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_main);
-        //        mPlanetTitles = getResources().getStringArray(R.array.planets_array);
+        ActionBar actionBar = getSupportActionBar();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+        }
+
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+
+            /** Called when a drawer has settled in a completely open state. */
+            public void onDrawerOpened(View drawerView) {
+            }
+
+            /** Called when a drawer has settled in a completely closed state. */
+            public void onDrawerClosed(View view) {
+            }
+        };
         // mNewsChannelsObjects will be used when user clicks on an item in drawer.
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -48,6 +67,9 @@ public class NewMainActivity extends AppCompatActivity {
                 selectItem(position);
             }
         });
+        // Set the drawer toggle as the DrawerListener
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
         // Set the adapter for the list view
         //        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.text_view_navigation_drawer, mPlanetTitles));
         // Set the list's click listener
@@ -144,7 +166,18 @@ public class NewMainActivity extends AppCompatActivity {
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, text);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
+    }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_new_main, menu);
@@ -153,6 +186,11 @@ public class NewMainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // Pass the event to ActionBarDrawerToggle, if it returns
+        // true, then it has handled the app icon touch event
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
