@@ -16,7 +16,7 @@ import java.util.UUID;
 //        resToastText = R.string.crash_toast_text
 //)
 
-public class Application9090 extends Application {
+public class ApplicationNEWS extends Application {
     @Deprecated // Should be replaced by non-static getUserAgentString
     public static String userAgent = "news.khoonat.com;0.0.0";
     public static String SESSION_ID = "X-JJ-SessionId";

@@ -15,7 +15,7 @@ import android.widget.ProgressBar;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-import ir.appson.sportfeed.Application9090;
+import ir.appson.sportfeed.ApplicationNEWS;
 import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.dto.FeedDetail;
 import ir.appson.sportfeed.util.ArrayHelper;
@@ -97,7 +97,7 @@ public class ChannelPageActivity extends ActionBarActivity {
             }
         });
         // Obtain the shared Tracker instance.
-        Application9090 application = (Application9090) getApplication();
+        ApplicationNEWS application = (ApplicationNEWS) getApplication();
         mTracker = application.getDefaultTracker();
     }
 

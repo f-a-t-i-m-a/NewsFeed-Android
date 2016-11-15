@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.telephony.TelephonyManager;
-import ir.appson.sportfeed.Application9090;
+import ir.appson.sportfeed.ApplicationNEWS;
 import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.proxy.SessionStartProxy;
 import ir.appson.sportfeed.proxy.dto.Operator;
@@ -55,7 +55,7 @@ public class SessionStartAsync extends AsyncTask<Object, Object, SessionStartRes
 
         Operator operator = getCurrentOperator(tm);
 
-        String sessionId = ((Application9090) context.getApplicationContext()).getSessionId();
+        String sessionId = ((ApplicationNEWS) context.getApplicationContext()).getSessionId();
 
         return new SessionStartInput(subscriberId, serialNumber, operator, sessionId);
     }

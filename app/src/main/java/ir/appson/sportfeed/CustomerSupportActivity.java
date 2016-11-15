@@ -2,11 +2,9 @@ package ir.appson.sportfeed;
 
 import android.annotation.TargetApi;
 import android.os.Build;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
@@ -33,9 +31,9 @@ public class CustomerSupportActivity extends AppCompatActivity {
         //FF for back button in action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);//???
-        ((WebView)findViewById(R.id.webView_activity_customer_support)).loadUrl(Application9090.CUSTOMER_SUPPORT_URL);
+        ((WebView)findViewById(R.id.webView_activity_customer_support)).loadUrl(ApplicationNEWS.CUSTOMER_SUPPORT_URL);
         // Obtain the shared Tracker instance.
-        Application9090 application = (Application9090) getApplication();
+        ApplicationNEWS application = (ApplicationNEWS) getApplication();
         mTracker = application.getDefaultTracker();
 
     }

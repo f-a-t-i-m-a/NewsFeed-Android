@@ -21,7 +21,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-import ir.appson.sportfeed.Application9090;
+import ir.appson.sportfeed.ApplicationNEWS;
 import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.dto.News;
 import ir.appson.sportfeed.util.ArrayHelper;
@@ -60,7 +60,7 @@ public class NewsDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         forceRTLIfSupported();
-        Application9090 application = (Application9090) getApplication();
+        ApplicationNEWS application = (ApplicationNEWS) getApplication();
         mTracker = application.getDefaultTracker();
     }
 

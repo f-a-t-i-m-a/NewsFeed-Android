@@ -1,7 +1,7 @@
 package ir.appson.sportfeed.proxy;
 
 import android.content.Context;
-import ir.appson.sportfeed.Application9090;
+import ir.appson.sportfeed.ApplicationNEWS;
 import ir.appson.sportfeed.util.StreamUtil;
 
 import java.io.*;
@@ -20,11 +20,11 @@ public class ProxyBase {
     }
 
     protected String getSessionId() {
-        return ((Application9090) context.getApplicationContext()).getSessionId();
+        return ((ApplicationNEWS) context.getApplicationContext()).getSessionId();
     }
 
     protected String getUserAgentString() {
-        return ((Application9090) context.getApplicationContext()).getUserAgentString();
+        return ((ApplicationNEWS) context.getApplicationContext()).getUserAgentString();
     }
 
     protected void storeInCache(String key, String value) {

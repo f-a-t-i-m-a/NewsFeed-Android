@@ -33,7 +33,7 @@ public class ReportSuggestionActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);//???
 
-        ((WebView)findViewById(R.id.webView_activity_support_national_team)).loadUrl(Application9090.REPORT_SUGGESTION);
+        ((WebView)findViewById(R.id.webView_activity_support_national_team)).loadUrl(ApplicationNEWS.REPORT_SUGGESTION);
         ((Button)findViewById(R.id.button_activity_support_national_team)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,7 +46,7 @@ public class ReportSuggestionActivity extends ActionBarActivity {
             }
         });
         // Obtain the shared Tracker instance.
-        Application9090 application = (Application9090) getApplication();
+        ApplicationNEWS application = (ApplicationNEWS) getApplication();
         mTracker = application.getDefaultTracker();
 
     }

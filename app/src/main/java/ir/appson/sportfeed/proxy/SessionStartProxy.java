@@ -1,7 +1,7 @@
 package ir.appson.sportfeed.proxy;
 
 import android.content.Context;
-import ir.appson.sportfeed.Application9090;
+import ir.appson.sportfeed.ApplicationNEWS;
 import ir.appson.sportfeed.proxy.dto.SessionStartInput;
 import ir.appson.sportfeed.proxy.dto.SessionStartResponse;
 import org.json.JSONException;
@@ -21,7 +21,7 @@ public class SessionStartProxy extends ProxyBase {
         try {
 
             RestClient client = new RestClient(url);
-            client.AddHeader(Application9090.USER_AGENT, getUserAgentString());
+            client.AddHeader(ApplicationNEWS.USER_AGENT, getUserAgentString());
 
             client.AddParam("phoneOperator", sessionStartInput.getOperator().toString());
             client.AddParam("phoneSerialNumber", sessionStartInput.getSerialNumber());

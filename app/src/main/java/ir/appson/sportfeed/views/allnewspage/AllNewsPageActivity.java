@@ -15,7 +15,7 @@ import android.widget.ProgressBar;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
-import ir.appson.sportfeed.Application9090;
+import ir.appson.sportfeed.ApplicationNEWS;
 import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.dto.FeedsNew;
 import ir.appson.sportfeed.util.ArrayHelper;
@@ -86,7 +86,7 @@ public class AllNewsPageActivity extends AppCompatActivity {
                 Log.e("REST", t.getMessage());
             }
         });
-        Application9090 application = (Application9090) getApplication();
+        ApplicationNEWS application = (ApplicationNEWS) getApplication();
         mTracker = application.getDefaultTracker();
     }
 

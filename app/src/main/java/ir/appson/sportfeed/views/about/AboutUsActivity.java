@@ -1,22 +1,17 @@
 package ir.appson.sportfeed.views.about;
 
 import android.annotation.TargetApi;
-import android.content.res.Resources;
 import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-import ir.appson.sportfeed.Application9090;
+import ir.appson.sportfeed.ApplicationNEWS;
 import ir.appson.sportfeed.R;
-
-import java.net.URL;
-
 
 public class AboutUsActivity extends ActionBarActivity {
 
@@ -39,9 +34,9 @@ public class AboutUsActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);//???
 
-        ((WebView)findViewById(R.id.webView_activity_about_us)).loadUrl(Application9090.ABOUT_US_URL);
+        ((WebView)findViewById(R.id.webView_activity_about_us)).loadUrl(ApplicationNEWS.ABOUT_US_URL);
         // Obtain the shared Tracker instance.
-        Application9090 application = (Application9090) getApplication();
+        ApplicationNEWS application = (ApplicationNEWS) getApplication();
         mTracker = application.getDefaultTracker();
     }
     //FF added to make the action bar RTL

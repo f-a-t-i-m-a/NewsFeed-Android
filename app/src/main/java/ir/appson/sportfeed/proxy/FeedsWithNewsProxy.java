@@ -37,8 +37,8 @@ public class FeedsWithNewsProxy extends ProxyBase {
         try {
 
             RestClient client = new RestClient(url);
-            client.AddHeader(Application9090.SESSION_ID, getSessionId());
-            client.AddHeader(Application9090.USER_AGENT, getUserAgentString());
+            client.AddHeader(ApplicationNEWS.SESSION_ID, getSessionId());
+            client.AddHeader(ApplicationNEWS.USER_AGENT, getUserAgentString());
 
             client.AddParam("newsCount", "" + newsCount);
 
