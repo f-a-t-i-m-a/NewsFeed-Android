@@ -27,13 +27,7 @@ public class NavigationDrawerFragmentOld extends Fragment {
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
     public ListView mDrawerListView;
     public List<FeedDetail> mNewsChannelsObjects = new ArrayList<FeedDetail>();
-    /**
-     * A pointer to the current callbacks instance (the Activity).
-     */
     private NavigationDrawerCallbacks mCallbacks;
-    /**
-     * Helper component that ties the action bar to the navigation drawer.
-     */
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
     private View mFragmentContainerView;
@@ -56,11 +50,7 @@ public class NavigationDrawerFragmentOld extends Fragment {
         channelsNamesList.add(channelsNamesList.size(), getResources().getString(R.string.about_us_persian));
         // mNewsChannelsObjects will be used when user clicks on an item in drawer.
         mNewsChannelsObjects = feeds;
-        mDrawerListView.setAdapter(new ArrayAdapter<>(
-                getActivity().getApplicationContext(),
-                R.layout.text_view_navigation_drawer,
-                channelsNamesList
-        ));
+        mDrawerListView.setAdapter(new ArrayAdapter<>(getActivity().getApplicationContext(), R.layout.text_view_navigation_drawer, channelsNamesList));
     }
 
     @Override

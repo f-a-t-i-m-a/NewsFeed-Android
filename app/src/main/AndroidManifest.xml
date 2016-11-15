@@ -1,86 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ir.appson.sportfeed" >
+          package="ir.appson.sportfeed">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
-        android:name=".Application9090"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity
-            android:name=".views.firstPage.FirstPageActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:name=".Application9090"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+        <activity
+                android:name=".views.firstPage.FirstPageActivity"
+                android:configChanges="keyboardHidden|orientation|screenSize"
+                android:label="@string/app_name"
+                android:screenOrientation="portrait">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+        <activity
+                android:name=".views.allnewspage.AllNewsPageActivity"
+                android:configChanges="keyboardHidden|orientation|screenSize"
+                android:parentActivityName=".views.firstPage.FirstPageActivity"
+                android:screenOrientation="portrait">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".views.firstPage.FirstPageActivity"/>
+        </activity>
+        <activity
+                android:name=".views.channelnewspage.ChannelPageActivity"
+                android:configChanges="keyboardHidden|orientation|screenSize"
+                android:parentActivityName=".views.firstPage.FirstPageActivity"
+                android:screenOrientation="portrait">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".views.firstPage.FirstPageActivity"/>
+        </activity>
+        <activity
+                android:name=".views.detail.NewsDetailActivity"
+                android:configChanges="keyboardHidden|orientation|screenSize"
+                android:label=""
+                android:parentActivityName=".views.channelnewspage.ChannelPageActivity"
+                android:screenOrientation="portrait">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".views.channelnewspage.ChannelPageActivity"/>
+        </activity>
+        <activity
+                android:name=".views.about.AboutUsActivity"
+                android:configChanges="keyboardHidden|orientation|screenSize"
+                android:label="@string/title_activity_about_us"
+                android:parentActivityName=".views.firstPage.FirstPageActivity"
+                android:screenOrientation="portrait">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".views.firstPage.FirstPageActivity"/>
+        </activity>
+        <activity
+                android:name=".CustomerSupportActivity"
+                android:label="@string/title_activity_customer_support"
+                android:parentActivityName=".views.firstPage.FirstPageActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".views.firstPage.FirstPageActivity"/>
+        </activity>
+        <activity
+                android:name=".ReportSuggestionActivity"
+                android:label="@string/title_activity_support_national_team"
+                android:parentActivityName=".views.firstPage.FirstPageActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".views.firstPage.FirstPageActivity"/>
+        </activity>
+        <!---->
+        <activity
+                android:name=".views.newfirstpage.NewMainActivity"
+                android:label="@string/title_activity_new_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
         </activity>
-        <activity
-            android:name=".views.allnewspage.AllNewsPageActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:parentActivityName=".views.firstPage.FirstPageActivity"
-            android:screenOrientation="portrait" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.firstPage.FirstPageActivity" />
-        </activity>
-        <activity
-            android:name=".views.channelnewspage.ChannelPageActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:parentActivityName=".views.firstPage.FirstPageActivity"
-            android:screenOrientation="portrait" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.firstPage.FirstPageActivity" />
-        </activity>
-        <activity
-            android:name=".views.detail.NewsDetailActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label=""
-            android:parentActivityName=".views.channelnewspage.ChannelPageActivity"
-            android:screenOrientation="portrait" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.channelnewspage.ChannelPageActivity" />
-        </activity>
-        <activity
-            android:name=".views.about.AboutUsActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_about_us"
-            android:parentActivityName=".views.firstPage.FirstPageActivity"
-            android:screenOrientation="portrait" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.firstPage.FirstPageActivity" />
-        </activity>
-        <activity
-            android:name=".CustomerSupportActivity"
-            android:label="@string/title_activity_customer_support"
-            android:parentActivityName=".views.firstPage.FirstPageActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.firstPage.FirstPageActivity" />
-        </activity>
-        <activity
-            android:name=".ReportSuggestionActivity"
-            android:label="@string/title_activity_support_national_team"
-            android:parentActivityName=".views.firstPage.FirstPageActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.firstPage.FirstPageActivity" />
-        </activity>
-
     </application>
-
 </manifest>
