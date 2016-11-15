@@ -151,7 +151,7 @@ public class NewsDetailActivity extends AppCompatActivity {
             feeds.enqueue(new Callback<News>() {
                 @Override
                 public void onResponse(Call<News> call, Response<News> response) {
-                    ProgressBar p = (ProgressBar) getActivity().findViewById(R.id.progressBar);
+                    ProgressBar p = (ProgressBar) rootView.findViewById(R.id.progressBar);
                     p.setVisibility(View.GONE);
 
 

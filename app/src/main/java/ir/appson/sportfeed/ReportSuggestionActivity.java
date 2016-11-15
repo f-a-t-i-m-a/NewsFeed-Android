@@ -15,14 +15,14 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
 
-public class SupportNationalTeamActivity extends ActionBarActivity {
+public class ReportSuggestionActivity extends ActionBarActivity {
     private Tracker mTracker;
 
     @Override
     protected void onResume() {
         super.onResume();
         Log.i("TAG", "Setting screen name: " + " support national team page");
-        mTracker.setScreenName("SupportNationalTeamActivity " + " support national team page");
+        mTracker.setScreenName("ReportSuggestionActivity " + " support national team page");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
     @Override

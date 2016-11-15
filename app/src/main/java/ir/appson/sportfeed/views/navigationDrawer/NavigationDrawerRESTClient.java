@@ -37,13 +37,13 @@ public class NavigationDrawerRESTClient {
         return instance;
     }
 
-    public ArrayList<FeedDetail> getFeeds(final NavigationDrawerFragment navigationDrawerFragment) {
+    public ArrayList<FeedDetail> getFeeds(final NavigationDrawerFragmentOld navigationDrawerFragmentOld) {
         final Call<FeedsNew> feeds = service.feeds();
         feeds.enqueue(new Callback<FeedsNew>() {
             @Override
             public void onResponse(Call<FeedsNew> call, Response<FeedsNew> response) {
                 if (response.isSuccessful()) {
-                    navigationDrawerFragment.populateYourself((ArrayList<FeedDetail>) response.body().Feeds);
+                    navigationDrawerFragmentOld.populateYourself((ArrayList<FeedDetail>) response.body().Feeds);
 //                    callback.resultReady(response.body());
                 }
             }

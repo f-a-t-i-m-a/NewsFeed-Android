@@ -10,29 +10,22 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.*;
+import ir.appson.sportfeed.R;
+import ir.appson.sportfeed.dto.FeedDetail;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ir.appson.sportfeed.R;
-import ir.appson.sportfeed.dto.FeedDetail;
-
-public class NavigationDrawerFragment extends Fragment {
+public class NavigationDrawerFragmentOld extends Fragment {
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
     public ListView mDrawerListView;
-    //FF
     public List<FeedDetail> mNewsChannelsObjects = new ArrayList<FeedDetail>();
     /**
      * A pointer to the current callbacks instance (the Activity).
@@ -48,7 +41,7 @@ public class NavigationDrawerFragment extends Fragment {
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
-    public NavigationDrawerFragment() {
+    public NavigationDrawerFragmentOld() {
     }
 
     public void populateYourself(List<FeedDetail> feeds) {
@@ -92,14 +85,14 @@ public class NavigationDrawerFragment extends Fragment {
         setHasOptionsMenu(true);
         //FF For async
         NavigationDrawerRESTClient.getInstance().getFeeds(this);
-//        new NavigationDrawerAsync(getActivity(), this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        //        new NavigationDrawerAsync(getActivity(), this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        mDrawerListView = (ListView) inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
-        LinearLayout ll = (LinearLayout) inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
-        mDrawerListView = (ListView) ll.findViewById(R.id.drawerView);
+        //        mDrawerListView = (ListView) inflater.inflate(R.layout.fragment_navigation_drawer_old, container, false);
+        LinearLayout ll = (LinearLayout) inflater.inflate(R.layout.fragment_navigation_drawer_old, container, false);
+        mDrawerListView = (ListView) ll.findViewById(R.id.listView);
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -107,7 +100,7 @@ public class NavigationDrawerFragment extends Fragment {
             }
         });
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
-//        return mDrawerListView;
+        //        return mDrawerListView;
         ImageView iv = (ImageView) ll.findViewById(R.id.imageView_fragment_navigation_drawer);
         iv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,6 +126,7 @@ public class NavigationDrawerFragment extends Fragment {
         // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         // set up the drawer's list view with items and click listener
+        //        ActionBar actionBar = getActionBar();
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
@@ -252,7 +246,7 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
     private ActionBar getActionBar() {
-        return ((ActionBarActivity) getActivity()).getSupportActionBar();
+        return ((AppCompatActivity) getActivity()).getSupportActionBar();
     }
 
     public FeedDetail getFeedSummary(int positionInList) {

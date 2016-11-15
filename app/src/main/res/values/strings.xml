@@ -38,6 +38,10 @@
     <string name="dear_friend_enjoy_this_app">من برنامهٔ ۹۰۹۰ را روی دستگاه اندرویدی‌ام نصب کردم. از طریق ۹۰۹۰ به
         جدیدترین اخبار اختصاصی تیم ملی فوتبال و سایر اخبار فوتبالی دسترسی پیدا می‌کنم. همین حالا آن را از سایت
         http://teammelli.ir/download/9090.apk دانلود کن و لذت ببر!</string>
+    <string name="title_activity_main">MainActivity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
 
