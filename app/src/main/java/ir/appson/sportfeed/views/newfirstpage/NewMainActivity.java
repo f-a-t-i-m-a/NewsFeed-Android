@@ -1,7 +1,9 @@
 package ir.appson.sportfeed.views.newfirstpage;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -37,6 +39,13 @@ public class NewMainActivity extends AppCompatActivity {
     private ListView mDrawerList;
     private int mCurrentSelectedPosition = 0;
     ActionBarDrawerToggle mDrawerToggle;
+    //FF added to make the action bar RTL
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    private void forceRTLIfSupported() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +98,7 @@ public class NewMainActivity extends AppCompatActivity {
             }
 
         });
+        forceRTLIfSupported();
     }
 
     public void populateYourself(List<FeedDetail> feeds) {
