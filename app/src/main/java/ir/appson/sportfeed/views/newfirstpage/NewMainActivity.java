@@ -2,7 +2,6 @@ package ir.appson.sportfeed.views.newfirstpage;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -21,7 +20,6 @@ import ir.appson.sportfeed.util.RetrofitHelper;
 import ir.appson.sportfeed.views.about.AboutUsActivity;
 import ir.appson.sportfeed.views.allnewspage.AllNewsPageActivity;
 import ir.appson.sportfeed.views.channelnewspage.ChannelPageActivity;
-import ir.appson.sportfeed.views.firstPage.FirstPageActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -133,11 +131,7 @@ public class NewMainActivity extends AppCompatActivity {
             Intent myIntent = new Intent(NewMainActivity.this, AboutUsActivity.class);
             startActivity(myIntent);
         } else {
-            // update the main content by replacing fragments
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, FirstPageActivity.FirstPageFragment.newInstance(position + 1))
-                    .commit();
+
         }
     }
 
