@@ -31,7 +31,7 @@
                 android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.firstPage.FirstPageActivity"/>
+                    android:value=".views.newfirstpage.NewMainActivity"/>
         </activity>
         <activity
                 android:name=".views.channelnewspage.ChannelPageActivity"
@@ -40,7 +40,7 @@
                 android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.firstPage.FirstPageActivity"/>
+                    android:value=".views.newfirstpage.NewMainActivity"/>
         </activity>
         <activity
                 android:name=".views.detail.NewsDetailActivity"
@@ -50,7 +50,7 @@
                 android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.channelnewspage.ChannelPageActivity"/>
+                    android:value=".views.newfirstpage.NewMainActivity"/>
         </activity>
         <activity
                 android:name=".views.about.AboutUsActivity"
@@ -60,7 +60,7 @@
                 android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.firstPage.FirstPageActivity"/>
+                    android:value=".views.newfirstpage.NewMainActivity"/>
         </activity>
         <activity
                 android:name=".CustomerSupportActivity"
@@ -68,7 +68,7 @@
                 android:parentActivityName=".views.firstPage.FirstPageActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.firstPage.FirstPageActivity"/>
+                    android:value=".views.newfirstpage.NewMainActivity"/>
         </activity>
         <activity
                 android:name=".ReportSuggestionActivity"
@@ -76,7 +76,7 @@
                 android:parentActivityName=".views.firstPage.FirstPageActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.firstPage.FirstPageActivity"/>
+                    android:value=".views.newfirstpage.NewMainActivity"/>
         </activity>
         <!---->
         <activity

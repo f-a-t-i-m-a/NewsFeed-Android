@@ -53,7 +53,7 @@ public class NewMainActivity extends AppCompatActivity {
         // Set the adapter for the list view
         //        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.text_view_navigation_drawer, mPlanetTitles));
         // Set the list's click listener
-        final Call<FeedsNew> feeds = new RetrofitHelper().getRetrofit().feeds();
+        final Call<FeedsNew> feeds = new RetrofitHelper().getRetrofitForNav().feeds();
         feeds.enqueue(new Callback<FeedsNew>() {
             @Override
             public void onResponse(Call<FeedsNew> call, Response<FeedsNew> response) {

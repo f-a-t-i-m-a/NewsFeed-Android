@@ -19,7 +19,7 @@ public class RetrofitHelper {
     private NavigationDrawerRESTClient.ResultReadyCallback callback;
     private NavigationDrawerAPIService service;
 
-    public NavigationDrawerAPIService getRetrofit() {
+    public NavigationDrawerAPIService getRetrofitForNav() {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
