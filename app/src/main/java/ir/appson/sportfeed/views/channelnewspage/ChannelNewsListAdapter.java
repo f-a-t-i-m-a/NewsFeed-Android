@@ -51,7 +51,7 @@ public class ChannelNewsListAdapter extends ArrayAdapter<NewsDetail> {
         newsResource.setPadding(0, 15, 10, 0);
         //        dateTime.setText(newsDetailObject.getJalaliDateTime());
         dateTime.setPadding(0, 15, 10, 0);
-        //FF here we setTag to the newsId so we can retrieve it in itemClickListener and pass it to the NewsDetailActivity.
+        //FF here we setTag to the newsId so we can retrieve it in itemClickListener and pass it to the DetailNEWSActivity.
         row.setTag(newsDetail.ID);
         return row;
     }

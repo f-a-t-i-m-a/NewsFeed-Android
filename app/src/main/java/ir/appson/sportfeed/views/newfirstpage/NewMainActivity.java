@@ -18,8 +18,8 @@ import ir.appson.sportfeed.dto.FeedDetail;
 import ir.appson.sportfeed.dto.FeedsNew;
 import ir.appson.sportfeed.util.RetrofitHelper;
 import ir.appson.sportfeed.views.about.AboutUsActivity;
-import ir.appson.sportfeed.views.allnewspage.AllNewsPageActivity;
-import ir.appson.sportfeed.views.channelnewspage.ChannelPageActivity;
+import ir.appson.sportfeed.views.allnewspage.AllNEWSActivity;
+import ir.appson.sportfeed.views.channelnewspage.ChannelNEWSActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -105,7 +105,7 @@ public class NewMainActivity extends AppCompatActivity {
 
     public void onNavigationDrawerItemSelected(int position) {
         if (getFeedSummary(position) != null && 2 <= position && position <= mNewsChannelsObjects.size() + 1) {
-            Intent myIntent = new Intent(NewMainActivity.this, ChannelPageActivity.class);
+            Intent myIntent = new Intent(NewMainActivity.this, ChannelNEWSActivity.class);
             Bundle bundle = new Bundle();
             bundle.putString("FeedName", getFeedSummary(position).Title);
             bundle.putInt("FeedId", getFeedSummary(position).ID);
@@ -113,7 +113,7 @@ public class NewMainActivity extends AppCompatActivity {
             startActivity(myIntent);
         } else if (position == 0) {
         } else if (position == 1) {
-            Intent myIntent = new Intent(NewMainActivity.this, AllNewsPageActivity.class);
+            Intent myIntent = new Intent(NewMainActivity.this, AllNEWSActivity.class);
             Bundle bundle = new Bundle();
             bundle.putString("FeedName", getString(R.string.all_news_persian));
             bundle.putInt("FeedId", 0);

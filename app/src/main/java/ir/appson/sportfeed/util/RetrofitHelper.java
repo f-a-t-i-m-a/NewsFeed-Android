@@ -1,8 +1,8 @@
 package ir.appson.sportfeed.util;
 
-import ir.appson.sportfeed.views.allnewspage.AllNewsPageAPIService;
-import ir.appson.sportfeed.views.channelnewspage.ChannelNewsAPIService;
-import ir.appson.sportfeed.views.detail.NewsDetailAPIService;
+import ir.appson.sportfeed.views.allnewspage.AllNEWSAPIService;
+import ir.appson.sportfeed.views.channelnewspage.ChannelNEWSAPIService;
+import ir.appson.sportfeed.views.detailnewspage.DetailNEWSAPIService;
 import ir.appson.sportfeed.views.navigationDrawer.NavigationDrawerAPIService;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -24,27 +24,27 @@ public class RetrofitHelper {
         return service;
     }
 
-    public AllNewsPageAPIService getRetrofitForAllNews() {
+    public AllNEWSAPIService getRetrofitForAllNews() {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
                 .build();
-        return retrofit.create(AllNewsPageAPIService.class);
+        return retrofit.create(AllNEWSAPIService.class);
     }
 
-    public ChannelNewsAPIService getRetrofitForChannelNews() {
+    public ChannelNEWSAPIService getRetrofitForChannelNews() {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
                 .build();
-        return retrofit.create(ChannelNewsAPIService.class);
+        return retrofit.create(ChannelNEWSAPIService.class);
     }
 
-    public NewsDetailAPIService getRetrofitForDetail() {
+    public DetailNEWSAPIService getRetrofitForDetail() {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
                 .build();
-        return retrofit.create(NewsDetailAPIService.class);
+        return retrofit.create(DetailNEWSAPIService.class);
     }
 }

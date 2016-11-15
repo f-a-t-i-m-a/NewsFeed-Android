@@ -1,4 +1,4 @@
-package ir.appson.sportfeed.views.detail;
+package ir.appson.sportfeed.views.detailnewspage;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -30,7 +30,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NewsDetailActivity extends AppCompatActivity {
+public class DetailNEWSActivity extends AppCompatActivity {
     MyFragmentStatePagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
     private Tracker mTracker;
@@ -39,7 +39,7 @@ public class NewsDetailActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.i("TAG", "Setting screen name: " + " news detail page");
-        mTracker.setScreenName("NewsDetailActivity " + " news detail page");
+        mTracker.setScreenName("DetailNEWSActivity " + " news detail page");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
@@ -161,7 +161,7 @@ public class NewsDetailActivity extends AppCompatActivity {
                         t.setText(a.News.Title);
                         TextView t1 = (TextView) rootView.findViewById(R.id.textView_newsText);
                         t1.setText(a.News.Text);
-//                        AllNewsListAdapter test = new AllNewsListAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.Feeds.get(0).News);
+//                        AllNEWSAdapter test = new AllNEWSAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.Feeds.get(0).News);
 //                        listView.setAdapter(test);
                     }
                 }

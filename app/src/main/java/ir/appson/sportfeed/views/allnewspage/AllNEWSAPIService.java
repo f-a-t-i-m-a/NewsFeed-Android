@@ -7,7 +7,7 @@ import retrofit2.http.GET;
 /**
  * Created by fatemeh on 11/6/2016.
  */
-public interface AllNewsPageAPIService {
+public interface AllNEWSAPIService {
 
     @GET("/api/mobile/feed/list/all/withnews")
     Call<FeedsNew> feeds();

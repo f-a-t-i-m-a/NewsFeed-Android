@@ -20,12 +20,12 @@ import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.dto.FeedsNew;
 import ir.appson.sportfeed.util.ArrayHelper;
 import ir.appson.sportfeed.util.RetrofitHelper;
-import ir.appson.sportfeed.views.detail.NewsDetailActivity;
+import ir.appson.sportfeed.views.detailnewspage.DetailNEWSActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AllNewsPageActivity extends AppCompatActivity {
+public class AllNEWSActivity extends AppCompatActivity {
     static int STATIC_INT = 1;//This is used for startActivityForResult
     ListView listView;
     int[] newsListIds;
@@ -36,7 +36,7 @@ public class AllNewsPageActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.i("TAG", "Setting screen name: " + " all channels news list page");
-        mTracker.setScreenName("AllNewsPageActivity " + " all news list page");
+        mTracker.setScreenName("AllNEWSActivity " + " all news list page");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
@@ -49,7 +49,7 @@ public class AllNewsPageActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent myIntent = new Intent(AllNewsPageActivity.this, NewsDetailActivity.class);
+                Intent myIntent = new Intent(AllNEWSActivity.this, DetailNEWSActivity.class);
                 int newsId = (int) view.getTag();
                 Bundle bundle = new Bundle();
                 bundle.putInt("channelId", channelId);
@@ -75,7 +75,7 @@ public class AllNewsPageActivity extends AppCompatActivity {
                     ProgressBar p = (ProgressBar) findViewById(R.id.progressBar);
                     p.setVisibility(View.GONE);
                     FeedsNew a = response.body();
-                    AllNewsListAdapter test = new AllNewsListAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.Feeds.get(0).News);
+                    AllNEWSAdapter test = new AllNEWSAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.Feeds.get(0).News);
                     listView.setAdapter(test);
                     newsListIds = ArrayHelper.extractIds2(a.Feeds.get(0).News);
                 }

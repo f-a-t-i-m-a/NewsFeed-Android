@@ -17,12 +17,12 @@ import java.util.ArrayList;
 /**
  * Created by fatemeh on 11/7/2016.
  */
-public class AllNewsListAdapter extends ArrayAdapter<NewsDetail> {
+public class AllNEWSAdapter extends ArrayAdapter<NewsDetail> {
 
     Context context;
     ArrayList<NewsDetail> list;
 
-    public AllNewsListAdapter(Context context, int resource, int textViewResourceId, ArrayList<NewsDetail> list) {
+    public AllNEWSAdapter(Context context, int resource, int textViewResourceId, ArrayList<NewsDetail> list) {
         super(context, resource, textViewResourceId, list);
         this.context = context;
         this.list = list;
@@ -48,7 +48,7 @@ public class AllNewsListAdapter extends ArrayAdapter<NewsDetail> {
         newsResource.setPadding(0, 15, 10, 0);
 //        dateTime.setText(newsDetailObject.getJalaliDateTime());
         dateTime.setPadding(0, 15, 10, 0);
-        //FF here we setTag to the newsId so we can retrieve it in itemClickListener and pass it to the NewsDetailActivity.
+        //FF here we setTag to the newsId so we can retrieve it in itemClickListener and pass it to the DetailNEWSActivity.
         row.setTag(newsDetail.ID);
         return row;
     }

@@ -14,7 +14,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".views.allnewspage.AllNewsPageActivity"
+                android:name=".views.allnewspage.AllNEWSActivity"
                 android:configChanges="keyboardHidden|orientation|screenSize"
                 android:parentActivityName=".views.firstPage.FirstPageActivity"
                 android:screenOrientation="portrait">
@@ -23,7 +23,7 @@
                     android:value=".views.newfirstpage.NewMainActivity"/>
         </activity>
         <activity
-                android:name=".views.channelnewspage.ChannelPageActivity"
+                android:name=".views.channelnewspage.ChannelNEWSActivity"
                 android:configChanges="keyboardHidden|orientation|screenSize"
                 android:parentActivityName=".views.newfirstpage.NewMainActivity"
                 android:screenOrientation="portrait">
@@ -32,10 +32,10 @@
                     android:value=".views.newfirstpage.NewMainActivity"/>
         </activity>
         <activity
-                android:name=".views.detail.NewsDetailActivity"
+                android:name=".views.detailnewspage.DetailNEWSActivity"
                 android:configChanges="keyboardHidden|orientation|screenSize"
                 android:label=""
-                android:parentActivityName=".views.channelnewspage.ChannelPageActivity"
+                android:parentActivityName=".views.channelnewspage.ChannelNEWSActivity"
                 android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"

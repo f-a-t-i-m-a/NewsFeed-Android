@@ -20,12 +20,12 @@ import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.dto.FeedDetail;
 import ir.appson.sportfeed.util.ArrayHelper;
 import ir.appson.sportfeed.util.RetrofitHelper;
-import ir.appson.sportfeed.views.detail.NewsDetailActivity;
+import ir.appson.sportfeed.views.detailnewspage.DetailNEWSActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ChannelPageActivity extends ActionBarActivity {
+public class ChannelNEWSActivity extends ActionBarActivity {
 
     static int STATIC_INT = 1;
     static String mNewsChannelTitle = "";
@@ -53,7 +53,7 @@ public class ChannelPageActivity extends ActionBarActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent myIntent = new Intent(ChannelPageActivity.this, NewsDetailActivity.class);
+                Intent myIntent = new Intent(ChannelNEWSActivity.this, DetailNEWSActivity.class);
                 int newsId = (int) view.getTag();
                 Bundle bundle = new Bundle();
                 bundle.putInt("channelId", channelId);
