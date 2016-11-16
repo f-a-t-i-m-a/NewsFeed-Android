@@ -1,6 +1,6 @@
 package ir.appson.sportfeed.views.detailnewspage;
 
-import ir.appson.sportfeed.dto.News;
+import ir.appson.sportfeed.dto.DetailNEWSRoot;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -10,7 +10,7 @@ import retrofit2.http.GET;
 public interface DetailNEWSAPIService {
 
     @GET("/api/mobile/news/18/details")
-    Call<News> detail();
+    Call<DetailNEWSRoot> detail();
 }
 
 

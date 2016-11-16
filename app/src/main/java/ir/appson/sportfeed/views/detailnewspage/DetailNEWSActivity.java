@@ -23,7 +23,7 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import ir.appson.sportfeed.ApplicationNEWS;
 import ir.appson.sportfeed.R;
-import ir.appson.sportfeed.dto.News;
+import ir.appson.sportfeed.dto.DetailNEWSRoot;
 import ir.appson.sportfeed.util.ArrayHelper;
 import ir.appson.sportfeed.util.RetrofitHelper;
 import retrofit2.Call;
@@ -144,16 +144,16 @@ public class DetailNEWSActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             int newsId = getArguments().getInt("newsId");
             final View rootView = inflater.inflate(R.layout.fragment_news_detail_with_view_pager, container, false);
-            final Call<News> feeds = new RetrofitHelper().getRetrofitForDetail().detail();
-            feeds.enqueue(new Callback<News>() {
+            final Call<DetailNEWSRoot> feeds = new RetrofitHelper().getRetrofitForDetail().detail();
+            feeds.enqueue(new Callback<DetailNEWSRoot>() {
                 @Override
-                public void onResponse(Call<News> call, Response<News> response) {
+                public void onResponse(Call<DetailNEWSRoot> call, Response<DetailNEWSRoot> response) {
                     ProgressBar p = (ProgressBar) rootView.findViewById(R.id.progressBar);
                     p.setVisibility(View.GONE);
 
 
                     if (response.isSuccessful()) {
-                        News a = response.body();
+                        DetailNEWSRoot a = response.body();
                         TextView t = (TextView) rootView.findViewById(R.id.textView_newsTitle);
                         t.setText(a.News.Title);
                         TextView t1 = (TextView) rootView.findViewById(R.id.textView_newsText);
@@ -164,7 +164,7 @@ public class DetailNEWSActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<News> call, Throwable t) {
+                public void onFailure(Call<DetailNEWSRoot> call, Throwable t) {
                     Log.e("REST", t.getMessage());
                 }
             });

@@ -19,9 +19,8 @@ import android.widget.ListView;
 import ir.appson.sportfeed.CustomerSupportActivity;
 import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.ReportSuggestionActivity;
-import ir.appson.sportfeed.dto.ChannelNEWSRoot;
-import ir.appson.sportfeed.dto.ChannelsListObject;
-import ir.appson.sportfeed.dto.ChannelsListRoot;
+import ir.appson.sportfeed.dto.ChannelsNamesObject;
+import ir.appson.sportfeed.dto.ChannelsNamesRoot;
 import ir.appson.sportfeed.util.RetrofitHelper;
 import ir.appson.sportfeed.views.about.AboutUsActivity;
 import ir.appson.sportfeed.views.allnewspage.AllNEWSActivity;
@@ -34,12 +33,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NewMainActivity extends AppCompatActivity {
-    public List<ChannelsListObject> mNewsChannelsObjects = new ArrayList<ChannelsListObject>();
+    public List<ChannelsNamesObject> mNewsChannelsObjects = new ArrayList<ChannelsNamesObject>();
+    ActionBarDrawerToggle mDrawerToggle;
     private String[] mPlanetTitles;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private int mCurrentSelectedPosition = 0;
-    ActionBarDrawerToggle mDrawerToggle;
+
     //FF added to make the action bar RTL
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void forceRTLIfSupported() {
@@ -59,9 +59,7 @@ public class NewMainActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeButtonEnabled(true);
         }
-
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
-
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
             }
@@ -79,32 +77,30 @@ public class NewMainActivity extends AppCompatActivity {
         });
         // Set the drawer toggle as the DrawerListener
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-
         // Set the adapter for the list view
         //        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.text_view_navigation_drawer, mPlanetTitles));
         // Set the list's click listener
-        final Call<ChannelsListRoot> feeds = new RetrofitHelper().getRetrofitForNav().feeds();
-        feeds.enqueue(new Callback<ChannelsListRoot>() {
+        final Call<ChannelsNamesRoot> feeds = new RetrofitHelper().getRetrofitForNav().feeds();
+        feeds.enqueue(new Callback<ChannelsNamesRoot>() {
             @Override
-            public void onResponse(Call<ChannelsListRoot> call, Response<ChannelsListRoot> response) {
+            public void onResponse(Call<ChannelsNamesRoot> call, Response<ChannelsNamesRoot> response) {
                 if (response.isSuccessful()) {
-                    populateYourself( response.body());
+                    populateYourself(response.body());
                     //                    callback.resultReady(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<ChannelsListRoot> call, Throwable t) {
+            public void onFailure(Call<ChannelsNamesRoot> call, Throwable t) {
                 Log.e("REST", t.getMessage());
             }
-
         });
         forceRTLIfSupported();
     }
 
-    public void populateYourself(ChannelsListRoot c) {
+    public void populateYourself(ChannelsNamesRoot c) {
         ArrayList<String> channelsNamesList = new ArrayList<>();
-        for (ChannelsListObject channelObject : c.Feeds)
+        for (ChannelsNamesObject channelObject : c.Feeds)
             channelsNamesList.add(channelObject.Title);
         channelsNamesList.add(0, getResources().getString(R.string.home_persian));
         channelsNamesList.add(1, getResources().getString(R.string.all_channels_persian));
@@ -129,7 +125,7 @@ public class NewMainActivity extends AppCompatActivity {
     }
 
     //oncli
-    public ChannelsListObject getFeedSummary(int positionInList) {
+    public ChannelsNamesObject getFeedSummary(int positionInList) {
         positionInList -= 2;
         if (0 <= positionInList && positionInList < mNewsChannelsObjects.size()) {
             return mNewsChannelsObjects.get(positionInList);
@@ -165,7 +161,6 @@ public class NewMainActivity extends AppCompatActivity {
             Intent myIntent = new Intent(NewMainActivity.this, AboutUsActivity.class);
             startActivity(myIntent);
         } else {
-
         }
     }
 
@@ -178,6 +173,7 @@ public class NewMainActivity extends AppCompatActivity {
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, text);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -190,6 +186,7 @@ public class NewMainActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_new_main, menu);
@@ -214,5 +211,4 @@ public class NewMainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

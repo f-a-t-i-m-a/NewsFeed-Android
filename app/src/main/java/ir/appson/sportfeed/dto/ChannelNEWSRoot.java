@@ -8,7 +8,6 @@ import java.util.List;
 public class ChannelNEWSRoot {
     public List<ChannelNEWSObject> NewsList;
 
-    public Integer ID;
-    public String Title;
+
 
 }
