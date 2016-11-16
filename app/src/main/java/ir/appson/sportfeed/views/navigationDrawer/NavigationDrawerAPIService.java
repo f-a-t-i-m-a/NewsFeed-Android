@@ -1,6 +1,6 @@
 package ir.appson.sportfeed.views.navigationDrawer;
 
-import ir.appson.sportfeed.dto.FeedsNew;
+import ir.appson.sportfeed.dto.ChannelsListRoot;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -10,7 +10,7 @@ import retrofit2.http.GET;
 public interface NavigationDrawerAPIService {
 
     @GET("/api/mobile/feed/list/all")
-    Call<FeedsNew> feeds();
+    Call<ChannelsListRoot> feeds();
 }
 
 

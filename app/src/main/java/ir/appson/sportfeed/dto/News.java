@@ -7,6 +7,6 @@ import com.google.gson.annotations.SerializedName;
  */
 public class News {
     @SerializedName(value = "News")
-    public NewsDetail News;
+    public ChannelNEWSObject News;
 
 }

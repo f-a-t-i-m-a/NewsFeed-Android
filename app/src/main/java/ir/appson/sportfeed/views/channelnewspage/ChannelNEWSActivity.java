@@ -17,7 +17,7 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import ir.appson.sportfeed.ApplicationNEWS;
 import ir.appson.sportfeed.R;
-import ir.appson.sportfeed.dto.FeedDetail;
+import ir.appson.sportfeed.dto.ChannelNEWSRoot;
 import ir.appson.sportfeed.util.ArrayHelper;
 import ir.appson.sportfeed.util.RetrofitHelper;
 import ir.appson.sportfeed.views.detailnewspage.DetailNEWSActivity;
@@ -76,23 +76,23 @@ public class ChannelNEWSActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);//???
 
 
-        final Call<FeedDetail> feeds = new RetrofitHelper().getRetrofitForChannelNews().feeds();
-        feeds.enqueue(new Callback<FeedDetail>() {
+        final Call<ChannelNEWSRoot> feeds = new RetrofitHelper().getRetrofitForChannelNews().feeds();
+        feeds.enqueue(new Callback<ChannelNEWSRoot>() {
             @Override
-            public void onResponse(Call<FeedDetail> call, Response<FeedDetail> response) {
+            public void onResponse(Call<ChannelNEWSRoot> call, Response<ChannelNEWSRoot> response) {
                 if (response.isSuccessful()) {
                     ProgressBar p = (ProgressBar) findViewById(R.id.progressBar);
                     p.setVisibility(View.GONE);
 
-                    FeedDetail a = response.body();
-                    ChannelNewsListAdapter test = new ChannelNewsListAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.NewsList);
-                    list.setAdapter(test);
-                    newsListIds = ArrayHelper.extractIds2(a.NewsList);
+                    ChannelNEWSRoot a = response.body();
+//                    ChannelNEWSAdapter test = new ChannelNEWSAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.NewsList);
+//                    list.setAdapter(test);
+//                    newsListIds = ArrayHelper.extractIds2(a.NewsList);
                 }
             }
 
             @Override
-            public void onFailure(Call<FeedDetail> call, Throwable t) {
+            public void onFailure(Call<ChannelNEWSRoot> call, Throwable t) {
                 Log.e("REST", t.getMessage());
             }
         });

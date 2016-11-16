@@ -144,9 +144,6 @@ public class DetailNEWSActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             int newsId = getArguments().getInt("newsId");
             final View rootView = inflater.inflate(R.layout.fragment_news_detail_with_view_pager, container, false);
-//            new NewsDetailAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, newsId, rootView.findViewById(R.id.activity_news_detail_relative_layout));
-//            new NewsDetailAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, newsId, rootView.findViewById(R.id.activity_news_detail_relative_layout));
-            /**/
             final Call<News> feeds = new RetrofitHelper().getRetrofitForDetail().detail();
             feeds.enqueue(new Callback<News>() {
                 @Override
@@ -160,7 +157,7 @@ public class DetailNEWSActivity extends AppCompatActivity {
                         TextView t = (TextView) rootView.findViewById(R.id.textView_newsTitle);
                         t.setText(a.News.Title);
                         TextView t1 = (TextView) rootView.findViewById(R.id.textView_newsText);
-                        t1.setText(a.News.Text);
+                        t1.setText(a.News.Summary);
 //                        AllNEWSAdapter test = new AllNEWSAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.Feeds.get(0).News);
 //                        listView.setAdapter(test);
                     }

@@ -3,7 +3,7 @@ package ir.appson.sportfeed.util;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import ir.appson.sportfeed.dto.NewsDetail;
+import ir.appson.sportfeed.dto.ChannelNEWSObject;
 import ir.appson.sportfeed.proxy.dto.NewsDetailObject;
 
 /**
@@ -20,10 +20,10 @@ public class ArrayHelper {
         return result;
     }
 
-    public static int[] extractIds2(ArrayList<NewsDetail> newsDetailObjects) {
+    public static int[] extractIds2(ArrayList<ChannelNEWSObject> newsDetailObjects) {
         int[] result = new int[newsDetailObjects.size()];
         int i = 0;
-        for (NewsDetail newsDetailObject : newsDetailObjects) {
+        for (ChannelNEWSObject newsDetailObject : newsDetailObjects) {
             result[i] = newsDetailObjects.get(i).ID;
             i++;
         }

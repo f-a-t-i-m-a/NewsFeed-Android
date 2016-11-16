@@ -1,15 +1,10 @@
 package ir.appson.sportfeed.dto;
 
-import android.graphics.Bitmap;
-
-import com.google.gson.annotations.SerializedName;
-
-import java.util.ArrayList;
-
 /**
  * Created by fatemeh on 11/13/2016.
  */
-public class NewsDetail {
+//also used as AllNEWSObject for AllNewsRoot
+public class ChannelNEWSObject {
     public Integer ID;
     public String Title;
     public String Summary;

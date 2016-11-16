@@ -1,7 +1,6 @@
 package ir.appson.sportfeed.views.channelnewspage;
 
-import ir.appson.sportfeed.dto.FeedDetail;
-import ir.appson.sportfeed.dto.FeedsNew;
+import ir.appson.sportfeed.dto.ChannelNEWSRoot;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -11,7 +10,7 @@ import retrofit2.http.GET;
 public interface ChannelNEWSAPIService {
 
     @GET("/api/mobile/feed/1/news/list/all")
-    Call<FeedDetail> feeds();
+    Call<ChannelNEWSRoot> feeds();
 }
 
 

@@ -10,18 +10,18 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import ir.appson.sportfeed.R;
-import ir.appson.sportfeed.dto.NewsDetail;
+import ir.appson.sportfeed.dto.ChannelNEWSObject;
 
 import java.util.ArrayList;
 
 /**
  * Created by fatemeh on 11/7/2016.
  */
-public class ChannelNewsListAdapter extends ArrayAdapter<NewsDetail> {
+public class ChannelNEWSAdapter extends ArrayAdapter<ChannelNEWSObject> {
     Context context;
-    ArrayList<NewsDetail> list;
+    ArrayList<ChannelNEWSObject> list;
 
-    public ChannelNewsListAdapter(Context context, int resource, int textViewResourceId, ArrayList<NewsDetail> list) {
+    public ChannelNEWSAdapter(Context context, int resource, int textViewResourceId, ArrayList<ChannelNEWSObject> list) {
         super(context, resource, textViewResourceId, list);
         this.context = context;
         this.list = list;
@@ -30,7 +30,7 @@ public class ChannelNewsListAdapter extends ArrayAdapter<NewsDetail> {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View row = inflater.inflate(R.layout.single_row, parent, false);
-        NewsDetail newsDetail = list.get(position);
+        ChannelNEWSObject newsDetail = list.get(position);
                 /*DO NOT DELETE*/
 
 /*

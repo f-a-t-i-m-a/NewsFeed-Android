@@ -1,6 +1,6 @@
 package ir.appson.sportfeed.views.allnewspage;
 
-import ir.appson.sportfeed.dto.FeedsNew;
+import ir.appson.sportfeed.dto.AllNEWSRoot;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -10,7 +10,7 @@ import retrofit2.http.GET;
 public interface AllNEWSAPIService {
 
     @GET("/api/mobile/feed/list/all/withnews")
-    Call<FeedsNew> feeds();
+    Call<AllNEWSRoot> feeds();
 }
 
 

@@ -19,8 +19,9 @@ import android.widget.ListView;
 import ir.appson.sportfeed.CustomerSupportActivity;
 import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.ReportSuggestionActivity;
-import ir.appson.sportfeed.dto.FeedDetail;
-import ir.appson.sportfeed.dto.FeedsNew;
+import ir.appson.sportfeed.dto.ChannelNEWSRoot;
+import ir.appson.sportfeed.dto.ChannelsListObject;
+import ir.appson.sportfeed.dto.ChannelsListRoot;
 import ir.appson.sportfeed.util.RetrofitHelper;
 import ir.appson.sportfeed.views.about.AboutUsActivity;
 import ir.appson.sportfeed.views.allnewspage.AllNEWSActivity;
@@ -33,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NewMainActivity extends AppCompatActivity {
-    public List<FeedDetail> mNewsChannelsObjects = new ArrayList<FeedDetail>();
+    public List<ChannelsListObject> mNewsChannelsObjects = new ArrayList<ChannelsListObject>();
     private String[] mPlanetTitles;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -82,18 +83,18 @@ public class NewMainActivity extends AppCompatActivity {
         // Set the adapter for the list view
         //        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.text_view_navigation_drawer, mPlanetTitles));
         // Set the list's click listener
-        final Call<FeedsNew> feeds = new RetrofitHelper().getRetrofitForNav().feeds();
-        feeds.enqueue(new Callback<FeedsNew>() {
+        final Call<ChannelsListRoot> feeds = new RetrofitHelper().getRetrofitForNav().feeds();
+        feeds.enqueue(new Callback<ChannelsListRoot>() {
             @Override
-            public void onResponse(Call<FeedsNew> call, Response<FeedsNew> response) {
+            public void onResponse(Call<ChannelsListRoot> call, Response<ChannelsListRoot> response) {
                 if (response.isSuccessful()) {
-                    populateYourself((ArrayList<FeedDetail>) response.body().Feeds);
+                    populateYourself( response.body());
                     //                    callback.resultReady(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<FeedsNew> call, Throwable t) {
+            public void onFailure(Call<ChannelsListRoot> call, Throwable t) {
                 Log.e("REST", t.getMessage());
             }
 
@@ -101,9 +102,9 @@ public class NewMainActivity extends AppCompatActivity {
         forceRTLIfSupported();
     }
 
-    public void populateYourself(List<FeedDetail> feeds) {
+    public void populateYourself(ChannelsListRoot c) {
         ArrayList<String> channelsNamesList = new ArrayList<>();
-        for (FeedDetail channelObject : feeds)
+        for (ChannelsListObject channelObject : c.Feeds)
             channelsNamesList.add(channelObject.Title);
         channelsNamesList.add(0, getResources().getString(R.string.home_persian));
         channelsNamesList.add(1, getResources().getString(R.string.all_channels_persian));
@@ -112,7 +113,7 @@ public class NewMainActivity extends AppCompatActivity {
         channelsNamesList.add(channelsNamesList.size(), getResources().getString(R.string.customer_support_persian));
         channelsNamesList.add(channelsNamesList.size(), getResources().getString(R.string.about_us_persian));
         // mNewsChannelsObjects will be used when user clicks on an item in drawer.
-        mNewsChannelsObjects = feeds;
+        mNewsChannelsObjects = c.Feeds;
         mDrawerList.setAdapter(new ArrayAdapter<>(getApplicationContext(), R.layout.text_view_navigation_drawer, channelsNamesList));
     }
 
@@ -127,7 +128,8 @@ public class NewMainActivity extends AppCompatActivity {
         onNavigationDrawerItemSelected(position);
     }
 
-    public FeedDetail getFeedSummary(int positionInList) {
+    //oncli
+    public ChannelsListObject getFeedSummary(int positionInList) {
         positionInList -= 2;
         if (0 <= positionInList && positionInList < mNewsChannelsObjects.size()) {
             return mNewsChannelsObjects.get(positionInList);
