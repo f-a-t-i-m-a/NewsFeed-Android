@@ -1,7 +1,7 @@
 package ir.appson.sportfeed.util;
 
 import ir.appson.sportfeed.views.allnewspage.AllNEWSAPIService;
-import ir.appson.sportfeed.views.channelnewspage.ChannelNEWSApiService;
+import ir.appson.sportfeed.views.channelnewspage.ChannelNEWSAPIService;
 import ir.appson.sportfeed.views.detailnewspage.DetailNEWSAPIService;
 import ir.appson.sportfeed.views.navigationDrawer.NavigationDrawerAPIService;
 import retrofit2.Retrofit;
@@ -32,12 +32,12 @@ public class RetrofitHelper {
         return retrofit.create(AllNEWSAPIService.class);
     }
 
-    public ChannelNEWSApiService getRetrofitForChannelNews() {
+    public ChannelNEWSAPIService getRetrofitForChannelNews() {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
                 .build();
-        return retrofit.create(ChannelNEWSApiService.class);
+        return retrofit.create(ChannelNEWSAPIService.class);
     }
 
     public DetailNEWSAPIService getRetrofitForDetail() {
