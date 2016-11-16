@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import ir.appson.sportfeed.R;
+import ir.appson.sportfeed.dto.ChannelNEWSObject;
 
 import java.util.ArrayList;
 

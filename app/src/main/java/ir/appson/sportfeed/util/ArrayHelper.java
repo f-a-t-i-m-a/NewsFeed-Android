@@ -3,6 +3,7 @@ package ir.appson.sportfeed.util;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import ir.appson.sportfeed.dto.ChannelNEWSObject;
 import ir.appson.sportfeed.proxy.dto.NewsDetailObject;
 
 /**
