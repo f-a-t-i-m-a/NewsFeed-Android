@@ -7,7 +7,7 @@ import retrofit2.http.GET;
 /**
  * Created by fatemeh on 11/6/2016.
  */
-public interface ChannelNEWSAPIService {
+public interface ChannelNEWSApiService {
 
     @GET("/api/mobile/feed/1/news/list/all")
     Call<ChannelNEWSRoot> feeds();
