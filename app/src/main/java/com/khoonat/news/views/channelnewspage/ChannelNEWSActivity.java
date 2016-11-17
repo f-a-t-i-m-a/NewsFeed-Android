@@ -37,9 +37,6 @@ public class ChannelNEWSActivity extends ActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("TAG", "Setting screen name: " + " channel news list page");
-        mTracker.setScreenName("ChannelNewsListActivity " + " channel news list page");
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     @Override

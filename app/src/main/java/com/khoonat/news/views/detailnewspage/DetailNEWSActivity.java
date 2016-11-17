@@ -36,14 +36,6 @@ public class DetailNEWSActivity extends AppCompatActivity {
     private Tracker mTracker;
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i("TAG", "Setting screen name: " + " news detail page");
-        mTracker.setScreenName("DetailNEWSActivity " + " news detail page");
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_detail_with_view_pager);

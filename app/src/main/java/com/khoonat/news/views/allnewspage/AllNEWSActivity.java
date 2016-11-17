@@ -35,9 +35,6 @@ public class AllNEWSActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("TAG", "Setting screen name: " + " all channels news list page");
-        mTracker.setScreenName("AllNEWSActivity " + " all news list page");
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     @Override
