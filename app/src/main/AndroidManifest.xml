@@ -1,75 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="ir.appson.sportfeed">
+          package="com.khoonat.news">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
-            android:name=".ApplicationNEWS"
+            android:name="com.khoonat.news.ApplicationNEWS"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".views.allnewspage.AllNEWSActivity"
+                android:name="com.khoonat.news.views.allnewspage.AllNEWSActivity"
                 android:configChanges="keyboardHidden|orientation|screenSize"
-                android:parentActivityName=".views.newfirstpage.NewMainActivity"
+                android:parentActivityName="com.khoonat.news.views.newfirstpage.NewMainActivity"
                 android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.newfirstpage.NewMainActivity"/>
+                    android:value="com.khoonat.news.views.newfirstpage.NewMainActivity"/>
         </activity>
         <activity
-                android:name=".views.channelnewspage.ChannelNEWSActivity"
+                android:name="com.khoonat.news.views.channelnewspage.ChannelNEWSActivity"
                 android:configChanges="keyboardHidden|orientation|screenSize"
-                android:parentActivityName=".views.newfirstpage.NewMainActivity"
+                android:parentActivityName="com.khoonat.news.views.newfirstpage.NewMainActivity"
                 android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.newfirstpage.NewMainActivity"/>
+                    android:value="com.khoonat.news.views.newfirstpage.NewMainActivity"/>
         </activity>
         <activity
-                android:name=".views.detailnewspage.DetailNEWSActivity"
+                android:name="com.khoonat.news.views.detailnewspage.DetailNEWSActivity"
                 android:configChanges="keyboardHidden|orientation|screenSize"
                 android:label=""
-                android:parentActivityName=".views.channelnewspage.ChannelNEWSActivity"
+                android:parentActivityName="com.khoonat.news.views.channelnewspage.ChannelNEWSActivity"
                 android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.newfirstpage.NewMainActivity"/>
+                    android:value="com.khoonat.news.views.newfirstpage.NewMainActivity"/>
         </activity>
         <activity
-                android:name=".views.about.AboutUsActivity"
+                android:name="com.khoonat.news.views.about.AboutUsActivity"
                 android:configChanges="keyboardHidden|orientation|screenSize"
                 android:label="@string/title_activity_about_us"
-                android:parentActivityName=".views.newfirstpage.NewMainActivity"
+                android:parentActivityName="com.khoonat.news.views.newfirstpage.NewMainActivity"
                 android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.newfirstpage.NewMainActivity"/>
+                    android:value="com.khoonat.news.views.newfirstpage.NewMainActivity"/>
         </activity>
         <activity
-                android:name=".CustomerSupportActivity"
+                android:name="com.khoonat.news.CustomerSupportActivity"
                 android:label="@string/title_activity_customer_support"
-                android:parentActivityName=".views.newfirstpage.NewMainActivity">
+                android:parentActivityName="com.khoonat.news.views.newfirstpage.NewMainActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.newfirstpage.NewMainActivity"/>
+                    android:value="com.khoonat.news.views.newfirstpage.NewMainActivity"/>
         </activity>
         <activity
-                android:name=".ReportSuggestionActivity"
+                android:name="com.khoonat.news.ReportSuggestionActivity"
                 android:label="@string/send_suggestion"
-                android:parentActivityName=".views.newfirstpage.NewMainActivity">
+                android:parentActivityName="com.khoonat.news.views.newfirstpage.NewMainActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".views.newfirstpage.NewMainActivity"/>
+                    android:value="com.khoonat.news.views.newfirstpage.NewMainActivity"/>
         </activity>
         <!---->
         <activity
-                android:name=".views.newfirstpage.NewMainActivity"
+                android:name="com.khoonat.news.views.newfirstpage.NewMainActivity"
                 android:label="@string/home_persian">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
