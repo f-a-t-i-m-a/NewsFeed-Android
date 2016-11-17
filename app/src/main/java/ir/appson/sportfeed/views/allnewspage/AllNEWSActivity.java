@@ -27,7 +27,7 @@ import retrofit2.Response;
 public class AllNEWSActivity extends AppCompatActivity {
     static int STATIC_INT = 1;//This is used for startActivityForResult
     ListView listView;
-    int[] newsListIds;
+    int[] newsListIDs;
     int channelId;
     private Tracker mTracker;
 
@@ -53,7 +53,7 @@ public class AllNEWSActivity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putInt("channelId", channelId);
                 bundle.putInt("newsId", newsId);
-                bundle.putIntArray("newsListIds", newsListIds);
+                bundle.putIntArray("newsListIDs", newsListIDs);
                 myIntent.putExtras(bundle);
                 startActivity(myIntent);
             }
@@ -76,7 +76,7 @@ public class AllNEWSActivity extends AppCompatActivity {
                     AllNEWSRoot a = response.body();
 //                    AllNEWSAdapter test = new AllNEWSAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.Feeds.get(0));
 //                    listView.setAdapter(test);
-//                    newsListIds = ArrayHelper.extractIds2(a.Feeds.get());
+//                    newsListIDs = ArrayHelper.extractIDs(a.Feeds.get());
                 }
             }
 

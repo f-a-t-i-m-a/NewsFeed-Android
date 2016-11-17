@@ -31,7 +31,7 @@ public class ChannelNEWSActivity extends ActionBarActivity {
     static String mNewsChannelTitle = "";
     ListView list;
     int channelId;
-    int[] newsListIds;
+    int[] newsListIDs;
     private Tracker mTracker;
 
     @Override
@@ -58,7 +58,7 @@ public class ChannelNEWSActivity extends ActionBarActivity {
                 Bundle bundle = new Bundle();
                 bundle.putInt("channelId", channelId);
                 bundle.putInt("newsId", newsId);
-                bundle.putIntArray("newsListIds", newsListIds);
+                bundle.putIntArray("newsListIDs", newsListIDs);
                 myIntent.putExtras(bundle);
                 startActivityForResult(myIntent, STATIC_INT);
             }
@@ -76,7 +76,7 @@ public class ChannelNEWSActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);//???
 
 
-        final Call<ChannelNEWSRoot> feeds = new RetrofitHelper().getRetrofitForChannelNews().feeds();
+        final Call<ChannelNEWSRoot> feeds = new RetrofitHelper().getRetrofitForChannelNews().feeds(new String(String.valueOf(channelId)));
         feeds.enqueue(new Callback<ChannelNEWSRoot>() {
             @Override
             public void onResponse(Call<ChannelNEWSRoot> call, Response<ChannelNEWSRoot> response) {
@@ -85,9 +85,9 @@ public class ChannelNEWSActivity extends ActionBarActivity {
                     p.setVisibility(View.GONE);
 
                     ChannelNEWSRoot a = response.body();
-//                    ChannelNEWSAdapter test = new ChannelNEWSAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.NewsList);
-//                    list.setAdapter(test);
-//                    newsListIds = ArrayHelper.extractIds2(a.NewsList);
+                    ChannelNEWSAdapter test = new ChannelNEWSAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.NewsList);
+                    list.setAdapter(test);
+                    newsListIDs = ArrayHelper.extractIDs(a.NewsList);
                 }
             }
 

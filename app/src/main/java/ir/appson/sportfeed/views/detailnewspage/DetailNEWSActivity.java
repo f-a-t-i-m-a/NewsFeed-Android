@@ -49,7 +49,7 @@ public class DetailNEWSActivity extends AppCompatActivity {
         setContentView(R.layout.activity_news_detail_with_view_pager);
         Bundle bundle = getIntent().getExtras();
         int newsId = bundle.getInt("newsId");
-        int[] newsIds = bundle.getIntArray("newsListIds");
+        int[] newsIds = bundle.getIntArray("newsListIDs");
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new MyFragmentStatePagerAdapter(getSupportFragmentManager(), newsIds, newsId);
