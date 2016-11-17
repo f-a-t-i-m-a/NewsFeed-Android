@@ -144,7 +144,7 @@ public class DetailNEWSActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             int newsId = getArguments().getInt("newsId");
             final View rootView = inflater.inflate(R.layout.fragment_news_detail_with_view_pager, container, false);
-            final Call<DetailNEWSRoot> feeds = new RetrofitHelper().getRetrofitForDetail().detail();
+            final Call<DetailNEWSRoot> feeds = new RetrofitHelper().getRetrofitForDetail().detail(newsId+"");
             feeds.enqueue(new Callback<DetailNEWSRoot>() {
                 @Override
                 public void onResponse(Call<DetailNEWSRoot> call, Response<DetailNEWSRoot> response) {
