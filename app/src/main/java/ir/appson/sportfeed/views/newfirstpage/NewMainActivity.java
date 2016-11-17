@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -76,10 +77,10 @@ public class NewMainActivity extends AppCompatActivity {
             }
         });
         // Set the drawer toggle as the DrawerListener
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+//        mDrawerLayout.setDrawerListener(mDrawerToggle);
         // Set the adapter for the list view
-        //        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.text_view_navigation_drawer, mPlanetTitles));
-        // Set the list's click listener
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_OPEN);
         final Call<ChannelsNamesRoot> feeds = new RetrofitHelper().getRetrofitForNav().feeds();
         feeds.enqueue(new Callback<ChannelsNamesRoot>() {
             @Override
@@ -104,7 +105,7 @@ public class NewMainActivity extends AppCompatActivity {
             channelsNamesList.add(channelObject.Title);
         channelsNamesList.add(0, getResources().getString(R.string.home_persian));
         channelsNamesList.add(1, getResources().getString(R.string.all_channels_persian));
-        channelsNamesList.add(channelsNamesList.size(), getResources().getString(R.string.support_national_team_persian));
+        channelsNamesList.add(channelsNamesList.size(), getResources().getString(R.string.send_suggestion));
         channelsNamesList.add(channelsNamesList.size(), getResources().getString(R.string.suggest_app_to_a_friend_persian));
         channelsNamesList.add(channelsNamesList.size(), getResources().getString(R.string.customer_support_persian));
         channelsNamesList.add(channelsNamesList.size(), getResources().getString(R.string.about_us_persian));

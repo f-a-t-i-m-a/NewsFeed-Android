@@ -14,6 +14,6 @@ public class ChannelNEWSRoot {
             return News;
         else if (NewsList!=null && NewsList.size()>0)
             return NewsList;
-        return null;
+        return new ArrayList<ChannelNEWSObject>();
     }
 }

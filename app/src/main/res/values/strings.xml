@@ -12,7 +12,7 @@
     <string name="all_channels_persian">
         همه&#8204;ی کانال&#8204;ها
     </string>
-    <string name="support_national_team_persian">حمایت از تیم ملی</string>
+    <string name="send_suggestion">ارسال پیشنهاد</string>
     <string name="suggest_app_to_a_friend_persian">پیشنهاد به دوستان</string>
     <string name="customer_support_persian">پشتیبانی</string>
     <string name="about_us_persian">
@@ -32,16 +32,10 @@
     <string name="title_activity_customer_support">پشتیبانی</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_support_national_team">حمایت از تیم ملی</string>
 
     <string name="crash_toast_text">مشکلی پیش آمد. خیلی ببخشید. تو آپدیت بعدی درستش می&#8204;کنیم :)</string>
-    <string name="dear_friend_enjoy_this_app">من برنامهٔ ۹۰۹۰ را روی دستگاه اندرویدی‌ام نصب کردم. از طریق ۹۰۹۰ به
-        جدیدترین اخبار اختصاصی تیم ملی فوتبال و سایر اخبار فوتبالی دسترسی پیدا می‌کنم. همین حالا آن را از سایت
-        http://teammelli.ir/download/9090.apk دانلود کن و لذت ببر!</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="dear_friend_enjoy_this_app">من برنامه اخبار املاک رو نصب کرده م و از آخرین اخبار مسکن و تحولات و قیمتهاش با خبر میشم. فکر کردم به درد تو هم میخوره. نصب کن و لذت ببر!</string>
 
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
 

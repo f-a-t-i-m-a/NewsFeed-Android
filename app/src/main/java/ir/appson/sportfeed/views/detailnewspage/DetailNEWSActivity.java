@@ -114,8 +114,8 @@ public class DetailNEWSActivity extends AppCompatActivity {
         sharingIntent.setType("text/plain");
         String text = tv.getText() +
                 "\n" +
-                "http://9090.teammelli.ir/n/" +
-                getIntent().getExtras().getInt("newsId");
+                "https://news.khoonat.com/api/mobile/news/" +
+                getIntent().getExtras().getInt("newsId")+"details";
         sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "News");
         sharingIntent.putExtra(Intent.EXTRA_TEXT, text);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
@@ -156,10 +156,10 @@ public class DetailNEWSActivity extends AppCompatActivity {
                         DetailNEWSRoot a = response.body();
                         TextView t = (TextView) rootView.findViewById(R.id.textView_newsTitle);
                         t.setText(a.News.Title);
-                        TextView t1 = (TextView) rootView.findViewById(R.id.textView_newsText);
+                        TextView t1 = (TextView) rootView.findViewById(R.id.textView_newsSummary);
                         t1.setText(a.News.Summary);
-//                        AllNEWSAdapter test = new AllNEWSAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.all.get(0).News);
-//                        listView.setAdapter(test);
+                        TextView t2 = (TextView) rootView.findViewById(R.id.textView_newsText);
+                        t2.setText(a.News.Text);
                     }
                 }
 

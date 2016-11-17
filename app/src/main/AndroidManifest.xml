@@ -61,7 +61,7 @@
         </activity>
         <activity
                 android:name=".ReportSuggestionActivity"
-                android:label="@string/title_activity_support_national_team"
+                android:label="@string/send_suggestion"
                 android:parentActivityName=".views.newfirstpage.NewMainActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"

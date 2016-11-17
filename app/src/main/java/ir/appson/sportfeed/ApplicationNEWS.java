@@ -8,13 +8,6 @@ import com.google.android.gms.analytics.Tracker;
 //import org.acra.ACRA;
 
 import java.util.UUID;
-//
-//@ReportsCrashes(
-//        formUri = "http://9090.teammelli.ir/api/mobile/session/crash",
-//        reportType = HttpSender.Type.JSON,
-//        mode = ReportingInteractionMode.TOAST,
-//        resToastText = R.string.crash_toast_text
-//)
 
 public class ApplicationNEWS extends Application {
     @Deprecated // Should be replaced by non-static getUserAgentString
