@@ -158,7 +158,7 @@ public class DetailNEWSActivity extends AppCompatActivity {
                         t.setText(a.News.Title);
                         TextView t1 = (TextView) rootView.findViewById(R.id.textView_newsText);
                         t1.setText(a.News.Summary);
-//                        AllNEWSAdapter test = new AllNEWSAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.Feeds.get(0).News);
+//                        AllNEWSAdapter test = new AllNEWSAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.all.get(0).News);
 //                        listView.setAdapter(test);
                     }
                 }

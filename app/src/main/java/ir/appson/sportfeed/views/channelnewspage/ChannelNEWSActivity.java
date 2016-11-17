@@ -85,9 +85,9 @@ public class ChannelNEWSActivity extends ActionBarActivity {
                     p.setVisibility(View.GONE);
 
                     ChannelNEWSRoot a = response.body();
-                    ChannelNEWSAdapter test = new ChannelNEWSAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.NewsList);
+                    ChannelNEWSAdapter test = new ChannelNEWSAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.getList());
                     list.setAdapter(test);
-                    newsListIDs = ArrayHelper.extractIDs(a.NewsList);
+                    newsListIDs = ArrayHelper.extractIDs(a.getList());
                 }
             }
 

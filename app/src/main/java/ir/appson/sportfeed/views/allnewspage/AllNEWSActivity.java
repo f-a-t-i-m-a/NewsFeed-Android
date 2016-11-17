@@ -18,6 +18,7 @@ import com.google.android.gms.analytics.Tracker;
 import ir.appson.sportfeed.ApplicationNEWS;
 import ir.appson.sportfeed.R;
 import ir.appson.sportfeed.dto.AllNEWSRoot;
+import ir.appson.sportfeed.util.ArrayHelper;
 import ir.appson.sportfeed.util.RetrofitHelper;
 import ir.appson.sportfeed.views.detailnewspage.DetailNEWSActivity;
 import retrofit2.Call;
@@ -74,9 +75,9 @@ public class AllNEWSActivity extends AppCompatActivity {
                     ProgressBar p = (ProgressBar) findViewById(R.id.progressBar);
                     p.setVisibility(View.GONE);
                     AllNEWSRoot a = response.body();
-//                    AllNEWSAdapter test = new AllNEWSAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.Feeds.get(0));
-//                    listView.setAdapter(test);
-//                    newsListIDs = ArrayHelper.extractIDs(a.Feeds.get());
+                    AllNEWSAdapter test = new AllNEWSAdapter(getApplicationContext(), R.layout.single_row, R.id.textViewTitleNewsTitle, a.getList());
+                    listView.setAdapter(test);
+                    newsListIDs = ArrayHelper.extractIDs(a.getList());
                 }
             }
 

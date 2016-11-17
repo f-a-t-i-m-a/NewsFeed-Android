@@ -1,6 +1,7 @@
 package ir.appson.sportfeed.dto;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -8,5 +9,16 @@ import java.util.List;
  */
 public class AllNEWSRoot {
     public List<ChannelNEWSRoot> Feeds;
+
+    public ArrayList<ChannelNEWSObject> getList() {
+        ArrayList<ChannelNEWSObject> result = new ArrayList<ChannelNEWSObject>();
+        if (Feeds != null)
+            for (ChannelNEWSRoot channel : Feeds) {
+                ArrayList current = channel.getList();
+                if (current != null)
+                    result.addAll((Collection<ChannelNEWSObject>) current);
+            }
+        return result;
+    }
 
 }
