@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,6 +17,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+
 import com.khoonat.news.CustomerSupportActivity;
 import com.khoonat.news.R;
 import com.khoonat.news.ReportSuggestionActivity;
@@ -99,6 +102,7 @@ public class NewMainActivity extends AppCompatActivity {
     }
 
     public void populateYourself(ChannelsNamesRoot c) {
+        ((ProgressBar) findViewById(R.id.progressBar)).setVisibility(View.GONE);
         ArrayList<String> channelsNamesList = new ArrayList<>();
         for (ChannelsNamesObject channelObject : c.Feeds)
             channelsNamesList.add(channelObject.Title);
@@ -118,7 +122,8 @@ public class NewMainActivity extends AppCompatActivity {
         if (mDrawerList != null) {
             mDrawerList.setItemChecked(position, true);
         }
-        if (mDrawerLayout != null) {
+        if (mDrawerLayout != null && mDrawerLayout.getDrawerLockMode(GravityCompat.START)!=DrawerLayout.LOCK_MODE_LOCKED_OPEN) {
+
             mDrawerLayout.closeDrawer(mDrawerList);
         }
         onNavigationDrawerItemSelected(position);
@@ -192,8 +197,8 @@ public class NewMainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_new_main, menu);
         return true;
     }
-
-    @Override
+/*TODO don't remove this. It's commented just for now cause the drawer is locked open and we don't want it to toggle*/
+  /*  @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Pass the event to ActionBarDrawerToggle, if it returns
         // true, then it has handled the app icon touch event
@@ -210,5 +215,5 @@ public class NewMainActivity extends AppCompatActivity {
             mDrawerLayout.openDrawer(mDrawerList);
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }
